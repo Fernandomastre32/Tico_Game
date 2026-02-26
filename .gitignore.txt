@@ -1,0 +1,25 @@
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[探]Logs/
+/[Mm]emoryCaptures/
+/[Vv]ideoCaptures/
+/[Uu]serSettings/
+
+# Archivos de solución de Visual Studio o VS Code
+*.csproj
+*.sln
+*.suo
+*.user
+*.useros
+*.sln.docuser
+*.suo
+*.user
+*.useros
+*.sln.docuser
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
