@@ -1,0 +1,1066 @@
+fileFormatVersion: 2
+guid: aff2dc6552c916e40964a15046660b72
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5718142190742769684
+    second: Brickhead_3_3_0
+  - first:
+      213: 4050076423591903150
+    second: Brickhead_3_3_1
+  - first:
+      213: -242049408569708831
+    second: Brickhead_3_3_2
+  - first:
+      213: 8845872435146776027
+    second: Brickhead_3_3_3
+  - first:
+      213: 4318934835717972249
+    second: Brickhead_3_3_4
+  - first:
+      213: 5898138137073798821
+    second: Brickhead_3_3_5
+  - first:
+      213: 5023680134611127074
+    second: Brickhead_3_3_6
+  - first:
+      213: 1093385264159879235
+    second: Brickhead_3_3_7
+  - first:
+      213: 8004618830824991827
+    second: Brickhead_3_3_8
+  - first:
+      213: -6411618360548080105
+    second: Brickhead_3_3_9
+  - first:
+      213: -5902600061253405150
+    second: Brickhead_3_3_10
+  - first:
+      213: 7705154983506253643
+    second: Brickhead_3_3_11
+  - first:
+      213: -3691707374205591220
+    second: Brickhead_3_3_12
+  - first:
+      213: 4785657950022644250
+    second: Brickhead_3_3_13
+  - first:
+      213: -1281464468817829899
+    second: Brickhead_3_3_14
+  - first:
+      213: -4028734573282327729
+    second: Brickhead_3_3_15
+  - first:
+      213: -460983721196014694
+    second: Brickhead_3_3_16
+  - first:
+      213: -8942765952055936422
+    second: Brickhead_3_3_17
+  - first:
+      213: 319129562183386848
+    second: Brickhead_3_3_18
+  - first:
+      213: 5311510370556906399
+    second: Brickhead_3_3_19
+  - first:
+      213: -6618163341437090185
+    second: Brickhead_3_3_20
+  - first:
+      213: -3315137202549641105
+    second: Brickhead_3_3_21
+  - first:
+      213: -1792015630059420569
+    second: Brickhead_3_3_22
+  - first:
+      213: -1930054164827997806
+    second: Brickhead_3_3_23
+  - first:
+      213: -1705974585334621096
+    second: Brickhead_3_3_24
+  - first:
+      213: -5658758735823515567
+    second: Brickhead_3_3_25
+  - first:
+      213: 6983325842930811394
+    second: Brickhead_3_3_26
+  - first:
+      213: -270268888858565141
+    second: Brickhead_3_3_27
+  - first:
+      213: 227086710542806628
+    second: Brickhead_3_3_28
+  - first:
+      213: 275539364846297682
+    second: Brickhead_3_3_29
+  - first:
+      213: -8006182258058263693
+    second: Brickhead_3_3_30
+  - first:
+      213: -6944270485173305664
+    second: Brickhead_3_3_31
+  - first:
+      213: -4833277927905472831
+    second: Brickhead_3_3_32
+  - first:
+      213: 1995409643612366571
+    second: Brickhead_3_3_33
+  - first:
+      213: -3520194146710790490
+    second: Brickhead_3_3_34
+  - first:
+      213: -5795386876152964933
+    second: Brickhead_3_3_35
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Brickhead_3_3_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 247
+        width: 35
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4109566c60cea5f40800000000000000
+      internalID: 5718142190742769684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_1
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 247
+        width: 37
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eaf316d8c03c43830800000000000000
+      internalID: 4050076423591903150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_2
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 247
+        width: 40
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1eeeb18685114acf0800000000000000
+      internalID: -242049408569708831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 268
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bddd751cc1ad2ca70800000000000000
+      internalID: 8845872435146776027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_4
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 247
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 911a703b950ffeb30800000000000000
+      internalID: 4318934835717972249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_5
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 257
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5aec770d2656ad150800000000000000
+      internalID: 5898138137073798821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_6
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 247
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22bcea04772b7b540800000000000000
+      internalID: 5023680134611127074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_7
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 199
+        width: 35
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34075e0da1c7c2f00800000000000000
+      internalID: 1093385264159879235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_8
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 199
+        width: 37
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35ce9b59a6e161f60800000000000000
+      internalID: 8004618830824991827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_9
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 199
+        width: 40
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 716c820421b5507a0800000000000000
+      internalID: -6411618360548080105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_10
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 225
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 226bac18480c51ea0800000000000000
+      internalID: -5902600061253405150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_11
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 199
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b47983342a53eea60800000000000000
+      internalID: 7705154983506253643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_12
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 214
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4129c1e3bb64ccc0800000000000000
+      internalID: -3691707374205591220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_13
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 204
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a12bf9fcc821a6240800000000000000
+      internalID: 4785657950022644250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_14
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 151
+        width: 40
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ff14d7ead2573ee0800000000000000
+      internalID: -1281464468817829899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_15
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 151
+        width: 38
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f430c21304f0718c0800000000000000
+      internalID: -4028734573282327729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_16
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 151
+        width: 40
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a93bfda7fb14a99f0800000000000000
+      internalID: -460983721196014694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_17
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 177
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5a7f365fb9e4e380800000000000000
+      internalID: -8942765952055936422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_18
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 151
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e6444f55a6cd6400800000000000000
+      internalID: 319129562183386848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_19
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 166
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9b09d95a8646b940800000000000000
+      internalID: 5311510370556906399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_20
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 156
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7764128618f8724a0800000000000000
+      internalID: -6618163341437090185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_21
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 103
+        width: 40
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f60b85457444ef1d0800000000000000
+      internalID: -3315137202549641105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_22
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 103
+        width: 38
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7644c5a674b7127e0800000000000000
+      internalID: -1792015630059420569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_23
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 103
+        width: 40
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 299f92486f11735e0800000000000000
+      internalID: -1930054164827997806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_24
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 124
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85c194d37292358e0800000000000000
+      internalID: -1705974585334621096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_25
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 103
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 150d99149ec0871b0800000000000000
+      internalID: -5658758735823515567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_26
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 113
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20242badad1c9e060800000000000000
+      internalID: 6983325842930811394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_27
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 103
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be5eeb5a0efcf3cf0800000000000000
+      internalID: -270268888858565141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_28
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 55
+        width: 40
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46ead1bf826c62300800000000000000
+      internalID: 227086710542806628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_29
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 55
+        width: 38
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 252ec4ba799e2d300800000000000000
+      internalID: 275539364846297682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_30
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 55
+        width: 35
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3730765a7a354e090800000000000000
+      internalID: -8006182258058263693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_31
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 55
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cef30b39cef0af90800000000000000
+      internalID: -6944270485173305664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_32
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 7
+        width: 40
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ce4576155fbcecb0800000000000000
+      internalID: -4833277927905472831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_33
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 7
+        width: 37
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be667ecaf7e11bb10800000000000000
+      internalID: 1995409643612366571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_34
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 7
+        width: 35
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6aed4e80312c52fc0800000000000000
+      internalID: -3520194146710790490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brickhead_3_3_35
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 7
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb811f66756a29fa0800000000000000
+      internalID: -5795386876152964933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Brickhead_3_3_0: 5718142190742769684
+      Brickhead_3_3_1: 4050076423591903150
+      Brickhead_3_3_10: -5902600061253405150
+      Brickhead_3_3_11: 7705154983506253643
+      Brickhead_3_3_12: -3691707374205591220
+      Brickhead_3_3_13: 4785657950022644250
+      Brickhead_3_3_14: -1281464468817829899
+      Brickhead_3_3_15: -4028734573282327729
+      Brickhead_3_3_16: -460983721196014694
+      Brickhead_3_3_17: -8942765952055936422
+      Brickhead_3_3_18: 319129562183386848
+      Brickhead_3_3_19: 5311510370556906399
+      Brickhead_3_3_2: -242049408569708831
+      Brickhead_3_3_20: -6618163341437090185
+      Brickhead_3_3_21: -3315137202549641105
+      Brickhead_3_3_22: -1792015630059420569
+      Brickhead_3_3_23: -1930054164827997806
+      Brickhead_3_3_24: -1705974585334621096
+      Brickhead_3_3_25: -5658758735823515567
+      Brickhead_3_3_26: 6983325842930811394
+      Brickhead_3_3_27: -270268888858565141
+      Brickhead_3_3_28: 227086710542806628
+      Brickhead_3_3_29: 275539364846297682
+      Brickhead_3_3_3: 8845872435146776027
+      Brickhead_3_3_30: -8006182258058263693
+      Brickhead_3_3_31: -6944270485173305664
+      Brickhead_3_3_32: -4833277927905472831
+      Brickhead_3_3_33: 1995409643612366571
+      Brickhead_3_3_34: -3520194146710790490
+      Brickhead_3_3_35: -5795386876152964933
+      Brickhead_3_3_4: 4318934835717972249
+      Brickhead_3_3_5: 5898138137073798821
+      Brickhead_3_3_6: 5023680134611127074
+      Brickhead_3_3_7: 1093385264159879235
+      Brickhead_3_3_8: 8004618830824991827
+      Brickhead_3_3_9: -6411618360548080105
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
