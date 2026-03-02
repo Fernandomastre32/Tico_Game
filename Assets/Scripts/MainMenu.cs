@@ -59,6 +59,6 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         // Cambia de escena. Asegúrate que la escena se llame así en el Build Settings
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("nivel1");
     }
 }
