@@ -246,6 +246,6 @@ public class GameManager : MonoBehaviour
 
     // --- BOTONES FINALES ---
     // (Recuerda que estas escenas deben estar en File > Build Settings para funcionar).
-    public void BotonMenu() { SceneManager.LoadScene("MenuPrincipal"); }
-    public void BotonSiguiente() { SceneManager.LoadScene("Nivel2"); }
+    public void BotonMenu() { SceneManager.LoadScene("SampleScene"); }
+    public void BotonSiguiente() { SceneManager.LoadScene("nivel2"); }
 }
