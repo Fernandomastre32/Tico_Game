@@ -128,12 +128,22 @@ public class MainMenu : MonoBehaviour
             {
                 Debug.LogError("Error: " + request.error);
                 if(textoError != null) textoError.text = "Usuario o contraseña incorrectos.";
-            }
-            else
+            }else
             {
                 Debug.Log("Login Exitoso: " + request.downloadHandler.text);
                 if(textoError != null) textoError.text = "";
                 
+                // --- NUEVO: GUARDAR EL TOKEN EN PLAYERPREFS ---
+                // 1. Traducimos el texto de la API a nuestro objeto de Unity
+                RespuestaLogin datosLogin = JsonUtility.FromJson<RespuestaLogin>(request.downloadHandler.text);
+                
+                // 2. Guardamos el token en la memoria del juego (como si fuera una cookie)
+                PlayerPrefs.SetString("TokenSesion", datosLogin.token);
+                PlayerPrefs.Save(); // Forzamos el guardado inmediato
+                
+                Debug.Log("¡Gafete guardado en el bolsillo! Token: " + datosLogin.token);
+                // ----------------------------------------------
+
                 // Cambiamos de pantalla instantáneamente
                 OpenMainMenu(); 
             }
@@ -153,4 +163,10 @@ public class MainMenu : MonoBehaviour
     { 
         SceneManager.LoadScene("nivel1"); 
     }
+    [System.Serializable]
+public class RespuestaLogin
+{
+    public string mensaje;
+    public string token;
+}
 }

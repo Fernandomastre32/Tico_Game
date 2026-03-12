@@ -1,251 +1,267 @@
-// Estas líneas le dicen a Unity qué herramientas extra vamos a usar en este archivo.
 using UnityEngine;
-using UnityEngine.UI;               // Necesario para los textos e imágenes clásicas de la interfaz.
-using UnityEngine.SceneManagement;  // Necesario para poder cambiar de nivel al terminar.
-using TMPro;                        // Necesario para los textos modernos (TextMeshPro).
-using System.Collections;           // NUEVO: Necesario para usar las "Corrutinas" (los temporizadores).
+using UnityEngine.UI;               
+using UnityEngine.SceneManagement;  
+using TMPro;                        
+using System.Collections;           
+using UnityEngine.Networking;       // NUEVO: Necesario para mandar las métricas a la API.
+using System.Text;                  // NUEVO: Para codificar el JSON.
 
 public class GameManager : MonoBehaviour
 {
-    // [Header(...)] crea títulos en el Inspector de Unity para mantener tus casillas ordenadas.
-
     [Header("Interfaz de Usuario")]
-    // Referencias a las partes principales de tu pantalla.
-    public GameObject overlayInstrucciones; // La pantalla inicial con fondo de pizarrón.
-    public GameObject contenedorJuego;      // La carpeta que agrupa los globos y al robot.
-    public Image imagenObjetivoArriba;      // El cuadrito de arriba que te dice qué color reventar.
+    public GameObject overlayInstrucciones; 
+    public GameObject contenedorJuego;      
+    public Image imagenObjetivoArriba;      
     
     [Header("Panel de Resultados")]
-    // Referencias a los textos donde mostraremos los puntos al final.
-    public GameObject panelResultados;      // La pantalla final de puntaje.
-    public Text textoCorrectas;             // Texto para los aciertos.
-    public Text textoIncorrectas;           // Texto para los errores.
-    public Text textoTiempo;                // Texto para el reloj final.
+    public GameObject panelResultados;      
+    public Text textoCorrectas;             
+    public Text textoIncorrectas;           
+    public Text textoTiempo;                
 
     [Header("Reacciones de Tico")]
-    // Referencias físicas del robot en la pantalla.
-    public Image imagenTico;                // El componente Image del robot.
-    public TMP_Text textoDialogoTico;       // El globo de texto de Tico.
+    public Image imagenTico;                
+    public TMP_Text textoDialogoTico;       
 
-    // Variables para el estado "Neutral" (cuando Tico está esperando o dando instrucciones).
-    public Sprite spriteNeutral;            // El dibujo de Tico sentadito o esperando.
-    public string fraseNeutral = "Puedes reventar las burbujas tocándolas"; // Su frase base.
-    
-    // float es un número con decimales. Aquí definimos cuántos segundos dura su reacción.
+    public Sprite spriteNeutral;            
+    public string fraseNeutral = "Puedes reventar las burbujas tocándolas"; 
     public float tiempoReaccion = 2.5f; 
 
-    // Los corchetes [] indican que esto es una "Lista" (Arreglo). Aquí pondremos varios dibujos y frases.
-    public Sprite[] spritesFelices; // Lista de dibujos celebrando (tico_good, tico_title).
-    public Sprite[] spritesAnimo;   // Lista de dibujos pensando o dando ánimos (tico_thinking, tico_calling).
+    public Sprite[] spritesFelices; 
+    public Sprite[] spritesAnimo;   
     
     public string[] frasesCorrectas = { "¡Muy bien!", "¡Ese es el color!", "¡Genial, sigue así!" };
     public string[] frasesAnimo = { "¡Casi!, busca bien", "¡Tú puedes, intenta con otro!", "¡Sigue buscando!" };
 
-    // Una "Coroutine" es como un proceso que corre en el fondo. La guardamos en esta variable para poder detenerla si es necesario.
     private Coroutine rutinaReaccion;
 
     [Header("Lógica del Nivel")]
-    // Variables para controlar el avance del jugador.
-    public Sprite[] secuenciaObjetivos;     // La lista de colores que debe seguir para ganar.
-    private int indiceActual = 0;           // Un número que nos dice en qué color de la lista vamos (empieza en 0).
+    public Sprite[] secuenciaObjetivos;     
+    private int indiceActual = 0;           
 
-    // Variables internas para las matemáticas del nivel (no se ven en el Inspector).
     private int conteoCorrectas = 0;        
     private int conteoIncorrectas = 0;      
-    private float tiempoJugado = 0f;        // Lleva la cuenta de los segundos transcurridos.
-    private bool juegoActivo = false;       // Un "interruptor" verdadero/falso para saber si el reloj debe avanzar.
+    private float tiempoJugado = 0f;        
+    private bool juegoActivo = false;       
 
-    // Start se ejecuta una sola vez cuando el nivel arranca.
+    [Header("Métricas IA y Conexión")]
+    // Aquí pondremos la dirección de tu API para las métricas
+    private string urlApiMetricas = "http://localhost:3000/api/metricas-ia";
+    
+    // Variables para calcular las matemáticas del paciente
+    private float momentoAparicionObjetivo = 0f; // Guarda el momento en el que se pidió un color
+    private float sumaTiempoReaccion = 0f;       // Acumula los tiempos de reacción
+    private int toquesValidos = 0;               // Para sacar el promedio al final
+
     void Start()
     {
-        // Encendemos las instrucciones y apagamos todo lo demás.
         overlayInstrucciones.SetActive(true);
         panelResultados.SetActive(false); 
         if(contenedorJuego != null) contenedorJuego.SetActive(false); 
     }
 
-    // Update se ejecuta constantemente, en cada fotograma del juego.
     void Update()
     {
-        // Si el interruptor del juego está encendido, sumamos el tiempo que ha pasado al reloj.
         if (juegoActivo) 
         {
             tiempoJugado += Time.deltaTime; 
         }
     }
 
-    // Esta función se llama al presionar la "X" en las instrucciones iniciales.
     public void IniciarJuego()
     {
-        overlayInstrucciones.SetActive(false); // Apagamos el pizarrón.
-        if(contenedorJuego != null) contenedorJuego.SetActive(true); // Encendemos los globos.
+        overlayInstrucciones.SetActive(false); 
+        if(contenedorJuego != null) contenedorJuego.SetActive(true); 
         
-        juegoActivo = true; // Arrancamos el cronómetro interno.
-        ActualizarImagenObjetivo(); // Ponemos el primer color a buscar.
-        
-        // Ponemos a Tico en su estado original usando esta función que creamos abajo.
+        juegoActivo = true; 
+        ActualizarImagenObjetivo(); 
         VolverANeutral();
     }
 
-    // Esta función la llaman las burbujas cuando el jugador las toca.
     public void EvaluarBurbujaTocada(Sprite spriteBurbuja, GameObject burbujaObject)
     {
-        // Si el juego ya terminó, no hacemos nada aunque toquen una burbuja.
         if (!juegoActivo || indiceActual >= secuenciaObjetivos.Length) return; 
 
         // 1. SI ACERTÓ EL COLOR:
         if (spriteBurbuja == secuenciaObjetivos[indiceActual])
         {
-            burbujaObject.SetActive(false); // Escondemos esa burbuja.
-            conteoCorrectas++;              // Le sumamos un punto bueno.
-            
-            DispararReaccion(true); // Le decimos a la función de Tico que ponga cara feliz (true).
+            // MÉTRICA: Calculamos cuánto tardó desde que se le pidió el color hasta que lo tocó
+            float tiempoReaccionToque = Time.time - momentoAparicionObjetivo;
+            sumaTiempoReaccion += tiempoReaccionToque;
+            toquesValidos++;
 
-            // Revisamos si quedan más burbujas de ese color (ignorando la que acabamos de reventar).
+            burbujaObject.SetActive(false); 
+            conteoCorrectas++;              
+            DispararReaccion(true); 
+
             if (!QuedanBurbujasDeColor(spriteBurbuja, burbujaObject))
             {
-                indiceActual++; // Como ya no hay de ese color, avanzamos al siguiente de la lista.
+                indiceActual++; 
                 
-                // Si aún nos quedan colores en la lista...
                 if (indiceActual < secuenciaObjetivos.Length)
                 {
-                    ActualizarImagenObjetivo(); // Actualizamos el cuadrito de arriba.
+                    ActualizarImagenObjetivo(); 
                 }
                 else
                 {
-                    TerminarJuego(); // Si ya no hay colores, pasamos a la pantalla de resultados.
+                    TerminarJuego(); 
                 }
             }
         }
         // 2. SI SE EQUIVOCÓ DE COLOR:
         else
         {
-            conteoIncorrectas++;    // Le sumamos un error.
-            DispararReaccion(false); // Le decimos a Tico que dé ánimos (false).
+            conteoIncorrectas++;    
+            DispararReaccion(false); 
         }
     }
 
-    // FUNCIÓN INTERMEDIARIA PARA LA REACCIÓN:
-    // Esta función prepara el temporizador antes de iniciarlo.
     private void DispararReaccion(bool esCorrecto)
     {
-        // Si Tico ya estaba haciendo una reacción anterior, detenemos ese temporizador viejo para que no se encimen.
-        if (rutinaReaccion != null)
-        {
-            StopCoroutine(rutinaReaccion);
-        }
-        // Iniciamos el temporizador nuevo y lo guardamos en nuestra variable.
+        if (rutinaReaccion != null) StopCoroutine(rutinaReaccion);
         rutinaReaccion = StartCoroutine(RutinaReaccionTico(esCorrecto));
     }
 
-    // EL TEMPORIZADOR DE TICO (Corrutina):
-    // IEnumerator permite que la función se pause a la mitad sin congelar todo el juego.
     private IEnumerator RutinaReaccionTico(bool esCorrecto)
     {
-        // Si acertó (esCorrecto == true)
         if (esCorrecto)
         {
-            // Elegimos un dibujo al azar de la lista "spritesFelices"
             if (spritesFelices.Length > 0 && imagenTico != null)
-            {
-                // Random.Range elige un número entre 0 y el total de dibujos en la lista.
                 imagenTico.sprite = spritesFelices[Random.Range(0, spritesFelices.Length)];
-            }
-            // Elegimos una frase al azar de "frasesCorrectas"
             if (textoDialogoTico != null && frasesCorrectas.Length > 0)
-            {
                 textoDialogoTico.text = frasesCorrectas[Random.Range(0, frasesCorrectas.Length)];
-            }
         }
-        // Si se equivocó (esCorrecto == false)
         else
         {
-            // Elegimos un dibujo al azar de "spritesAnimo"
             if (spritesAnimo.Length > 0 && imagenTico != null)
-            {
                 imagenTico.sprite = spritesAnimo[Random.Range(0, spritesAnimo.Length)];
-            }
-            // Elegimos una frase al azar de "frasesAnimo"
             if (textoDialogoTico != null && frasesAnimo.Length > 0)
-            {
                 textoDialogoTico.text = frasesAnimo[Random.Range(0, frasesAnimo.Length)];
-            }
         }
 
-        // AQUÍ ESTÁ LA MAGIA: Le decimos a Unity "Pausa esta función aquí mismo durante 2.5 segundos".
-        // El resto del juego sigue funcionando normal, pero esta función espera.
         yield return new WaitForSeconds(tiempoReaccion);
-
-        // Una vez que pasaron los 2.5 segundos, ejecutamos la función para que Tico vuelva a su pose normal.
         VolverANeutral();
     }
 
-    // FUNCIÓN PARA REINICIAR A TICO:
     private void VolverANeutral()
     {
-        // Le regresamos su dibujo base y su texto base.
-        if (imagenTico != null && spriteNeutral != null)
-        {
-            imagenTico.sprite = spriteNeutral;
-        }
-        if (textoDialogoTico != null)
-        {
-            textoDialogoTico.text = fraseNeutral;
-        }
+        if (imagenTico != null && spriteNeutral != null) imagenTico.sprite = spriteNeutral;
+        if (textoDialogoTico != null) textoDialogoTico.text = fraseNeutral;
     }
 
-    // FUNCIÓN BUSCADORA DE BURBUJAS:
     private bool QuedanBurbujasDeColor(Sprite colorBuscado, GameObject burbujaIgnorada)
     {
-        // Encuentra todos los botones de burbuja en la escena.
         BotonBurbuja[] todasLasBurbujas = FindObjectsOfType<BotonBurbuja>();
-        
         foreach (BotonBurbuja burbuja in todasLasBurbujas)
         {
-            // Si encuentra una activa, que no sea la que acabamos de tocar, y que coincida en color...
             if (burbuja.gameObject.activeInHierarchy && 
                 burbuja.gameObject != burbujaIgnorada && 
                 burbuja.GetComponent<Image>().sprite == colorBuscado)
             {
-                return true; // ...avisa que SÍ encontró una.
+                return true; 
             }
         }
-        return false; // Si revisó todas y no encontró ninguna válida, avisa que NO quedan.
+        return false; 
     }
 
-    // FUNCIÓN PARA ACTUALIZAR EL CUADRITO SUPERIOR:
     private void ActualizarImagenObjetivo()
     {
         if(secuenciaObjetivos.Length > 0 && indiceActual < secuenciaObjetivos.Length)
         {
             imagenObjetivoArriba.sprite = secuenciaObjetivos[indiceActual];
+            
+            // MÉTRICA: Registramos en qué segundo exacto apareció este nuevo objetivo
+            momentoAparicionObjetivo = Time.time;
         }
     }
 
-    // FUNCIÓN PARA FINALIZAR EL NIVEL:
     private void TerminarJuego()
     {
-        juegoActivo = false; // Apagamos el cronómetro.
-        
-        // Si Tico estaba en medio de una reacción, la detenemos de golpe.
+        juegoActivo = false; 
         if (rutinaReaccion != null) StopCoroutine(rutinaReaccion);
         
-        // Matemáticas para convertir los segundos puros en minutos y segundos (ej. 65 seg -> 01:05)
         int minutos = Mathf.FloorToInt(tiempoJugado / 60F);
         int segundos = Mathf.FloorToInt(tiempoJugado % 60F);
         
-        // Pasamos los números a las cajas de texto de la pantalla final.
         textoCorrectas.text = conteoCorrectas.ToString();
         textoIncorrectas.text = conteoIncorrectas.ToString();
         textoTiempo.text = string.Format("{0:00}:{1:00}", minutos, segundos);
 
-        // Escondemos el juego y mostramos los resultados.
         if(contenedorJuego != null) contenedorJuego.SetActive(false);
         panelResultados.SetActive(true);
+
+        // --- CÁLCULO DE MÉTRICAS IA ---
+        
+        // 1. Nivel de frustración (Inicia en 1. Suma 1 por cada error. Topado a 10).
+        int nivelFrustracion = Mathf.Clamp(1 + conteoIncorrectas, 1, 10);
+        
+        // 2. Promedio de Tiempo de Reacción (en milisegundos)
+        int promedioReaccionMs = 0;
+        if (toquesValidos > 0) 
+        {
+            promedioReaccionMs = Mathf.RoundToInt((sumaTiempoReaccion / toquesValidos) * 1000f);
+        }
+
+        // 3. Variables de entorno / Hardware
+        int latenciaSimuladaMs = Random.Range(15, 45); // Milisegundos de retraso simulado del dispositivo
+        float presionPantalla = 1.0f; // En PC es 1.0. (En móvil sería: Input.GetTouch(0).pressure)
+
+        // IMPORTANTE: Debes obtener estos IDs de donde los hayas guardado al hacer Login
+        int pacienteIdTemporal = 1; 
+        int citaIdTemporal = 1;
+
+        // Disparamos la corrutina para enviar los datos a PostgreSQL
+        StartCoroutine(EnviarMetricasAPI(pacienteIdTemporal, citaIdTemporal, nivelFrustracion, latenciaSimuladaMs, presionPantalla, promedioReaccionMs));
+    }
+
+    // --------------------------------------------------------
+    // CONEXIÓN CON LA API DE NODE.JS
+    // --------------------------------------------------------
+    private IEnumerator EnviarMetricasAPI(int pId, int cId, int frustracion, int latencia, float presion, int tiempoReaccion)
+    {
+        // 1. Armamos el JSON respetando los nombres de tu tabla en la BD
+        string jsonDatos = "{" +
+            "\"paciente_id\":" + pId + "," +
+            "\"cita_id\":" + cId + "," +
+            "\"frustracion\":" + frustracion + "," +
+            "\"latencia_ms\":" + latencia + "," +
+            "\"presion_toque\":" + presion.ToString("F2").Replace(",", ".") + "," +
+            "\"tiempo_reaccion_ms\":" + tiempoReaccion +
+        "}";
+
+        byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonDatos);
+
+        using (UnityWebRequest request = new UnityWebRequest(urlApiMetricas, "POST"))
+        {
+            request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+            request.downloadHandler = new DownloadHandlerBuffer();
+            request.SetRequestHeader("Content-Type", "application/json");
+
+            // --- SEGURIDAD JWT ---
+            // Como tu ruta está protegida por verifyToken, necesitamos enviarle el gafete de acceso.
+            // Aquí extraemos el token que (idealmente) guardaste en PlayerPrefs durante el Login.
+            string tokenGuardado = PlayerPrefs.GetString("TokenSesion", ""); 
+            if (!string.IsNullOrEmpty(tokenGuardado))
+            {
+                request.SetRequestHeader("Authorization", "Bearer " + tokenGuardado);
+            }
+
+            // Enviamos el paquete
+            yield return request.SendWebRequest();
+
+            if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
+            {
+                Debug.LogError("Error al guardar métricas: " + request.error);
+                Debug.LogError("Respuesta del servidor: " + request.downloadHandler.text);
+            }
+            else
+            {
+                Debug.Log("¡Métricas IA guardadas con éxito en PostgreSQL! " + request.downloadHandler.text);
+            }
+        }
     }
 
     // --- BOTONES FINALES ---
-    // (Recuerda que estas escenas deben estar en File > Build Settings para funcionar).
     public void BotonMenu() { SceneManager.LoadScene("SampleScene"); }
     public void BotonSiguiente() { SceneManager.LoadScene("nivel2"); }
 }
