@@ -214,12 +214,11 @@ public class GameManager : MonoBehaviour
         StartCoroutine(EnviarMetricasAPI(pacienteIdTemporal, citaIdTemporal, nivelFrustracion, latenciaSimuladaMs, presionPantalla, promedioReaccionMs));
     }
 
-    // --------------------------------------------------------
-    // CONEXIÓN CON LA API DE NODE.JS
+  // --------------------------------------------------------
+    // CONEXIÓN CON LA API DE NODE.JS (CON ESPÍAS ACTIVADOS)
     // --------------------------------------------------------
     private IEnumerator EnviarMetricasAPI(int pId, int cId, int frustracion, int latencia, float presion, int tiempoReaccion)
     {
-        // 1. Armamos el JSON respetando los nombres de tu tabla en la BD
         string jsonDatos = "{" +
             "\"paciente_id\":" + pId + "," +
             "\"cita_id\":" + cId + "," +
@@ -238,15 +237,27 @@ public class GameManager : MonoBehaviour
             request.SetRequestHeader("Content-Type", "application/json");
 
             // --- SEGURIDAD JWT ---
-            // Como tu ruta está protegida por verifyToken, necesitamos enviarle el gafete de acceso.
-            // Aquí extraemos el token que (idealmente) guardaste en PlayerPrefs durante el Login.
             string tokenGuardado = PlayerPrefs.GetString("TokenSesion", ""); 
+
+            // ==========================================
+            // 🕵️‍♂️ ESPÍAS DE DEBUG: ¡AQUÍ ESTÁ LA MAGIA!
+            // ==========================================
+            Debug.Log("<color=yellow>--- INTENTANDO MANDAR MÉTRICAS ---</color>");
+            if (string.IsNullOrEmpty(tokenGuardado))
+            {
+                Debug.LogError("🚨 ERROR CRÍTICO: ¡El bolsillo está vacío! Unity no tiene ningún token guardado.");
+            }
+            else
+            {
+                Debug.Log("Token que voy a mandar: " + tokenGuardado);
+            }
+            // ==========================================
+
             if (!string.IsNullOrEmpty(tokenGuardado))
             {
                 request.SetRequestHeader("Authorization", "Bearer " + tokenGuardado);
             }
 
-            // Enviamos el paquete
             yield return request.SendWebRequest();
 
             if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
