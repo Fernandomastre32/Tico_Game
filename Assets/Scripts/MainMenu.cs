@@ -1,9 +1,9 @@
 // LIBRERÍAS NECESARIAS
 using UnityEngine;
 using UnityEngine.SceneManagement; 
-using UnityEngine.Networking;      
-using TMPro;                       
-using System.Collections;          
+using UnityEngine.Networking;       
+using TMPro;                        
+using System.Collections;           
 using System.Text;                 
 using System.Text.RegularExpressions; 
 
@@ -19,9 +19,8 @@ public class MainMenu : MonoBehaviour
     public TMP_InputField inputPassword;      
     public TextMeshProUGUI textoError;        
 
-    private string urlApiLogin = "http://localhost:3000/api/tutores/login-unity"; 
+    // La URL de localhost ha sido eliminada para evitar conflictos con el proyecto Tico
 
-    // NUEVO: El candado para evitar que el jugador presione el botón múltiples veces
     private bool intentandoLogin = false;
 
     private void Start()
@@ -61,58 +60,33 @@ public class MainMenu : MonoBehaviour
     }
 
     // --------------------------------------------------------
-    // LÓGICA DE VALIDACIÓN INSTANTÁNEA
+    // LÓGICA DE VALIDACIÓN (DESACTIVADA PARA LOCALHOST)
     // --------------------------------------------------------
     public void LoginAttempt()
     {
-        // 0. Si el candado está activado, ignoramos cualquier clic extra
+        // Este método ahora solo muestra un mensaje o puede ser usado para validaciones locales
         if (intentandoLogin) return;
 
         string usuarioInput = inputUsuarioCorreo.text;
         string passwordInput = inputPassword.text;
 
-        // 1. REVISIÓN DE CAMPOS VACÍOS
         if(string.IsNullOrEmpty(usuarioInput) || string.IsNullOrEmpty(passwordInput))
         {
             if(textoError != null) textoError.text = "Por favor, llena todos los campos.";
             return; 
         }
 
-        // 2. REVISIÓN INTELIGENTE DE FORMATO
-        if (usuarioInput.Contains("@"))
-        {
-            bool esCorreoValido = Regex.IsMatch(usuarioInput, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
-            if (!esCorreoValido)
-            {
-                if(textoError != null) textoError.text = "Formato de correo inválido.";
-                return; 
-            }
-        }
-        else
-        {
-            if (usuarioInput.Length < 3)
-            {
-                if(textoError != null) textoError.text = "El nombre de usuario es muy corto.";
-                return; 
-            }
-        }
-
-        // 3. ENVIAR A LA BASE DE DATOS
-        // Activamos el candado e informamos al usuario
-        intentandoLogin = true;
-        if(textoError != null) textoError.text = "Conectando...";
-        
-        StartCoroutine(EnviarLoginAPI(usuarioInput, passwordInput));
+        // Si usas Supabase, llama a AuthManager.Instance.LoginNormal() aquí en lugar de la API vieja
+        Debug.Log("Intento de login local bloqueado. Usa el botón de Google.");
     }
 
-    // Corrutina para la conexión
+    /* // COMENTADO PARA EVITAR ERROR CS0103 Y CONFLICTOS DE RED
     private IEnumerator EnviarLoginAPI(string usuario, string password)
     {
+        string urlApiLogin = "http://localhost:3000/api/tutores/login-unity";
         string jsonDatos = "{\"usuario\":\"" + usuario + "\",\"password\":\"" + password + "\"}";
         byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonDatos);
 
-        // NUEVO: El bloque "using" asegura que Unity destruya la conexión web en cuanto termine.
-        // Esto evita que la interfaz gráfica se congele esperando un cierre manual.
         using (UnityWebRequest request = new UnityWebRequest(urlApiLogin, "POST"))
         {
             request.uploadHandler = new UploadHandlerRaw(bodyRaw);
@@ -121,34 +95,23 @@ public class MainMenu : MonoBehaviour
 
             yield return request.SendWebRequest();
 
-            // Desactivamos el candado sin importar si hubo error o éxito
             intentandoLogin = false;
 
             if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
             {
                 Debug.LogError("Error: " + request.error);
-                if(textoError != null) textoError.text = "Usuario o contraseña incorrectos.";
-            }else
+                if(textoError != null) textoError.text = "Error de conexión.";
+            }
+            else
             {
-                Debug.Log("Login Exitoso: " + request.downloadHandler.text);
-                if(textoError != null) textoError.text = "";
-                
-                // --- NUEVO: GUARDAR EL TOKEN EN PLAYERPREFS ---
-                // 1. Traducimos el texto de la API a nuestro objeto de Unity
                 RespuestaLogin datosLogin = JsonUtility.FromJson<RespuestaLogin>(request.downloadHandler.text);
-                
-                // 2. Guardamos el token en la memoria del juego (como si fuera una cookie)
                 PlayerPrefs.SetString("TokenSesion", datosLogin.token);
-                PlayerPrefs.Save(); // Forzamos el guardado inmediato
-                
-                Debug.Log("¡Gafete guardado en el bolsillo! Token: " + datosLogin.token);
-                // ----------------------------------------------
-
-                // Cambiamos de pantalla instantáneamente
+                PlayerPrefs.Save();
                 OpenMainMenu(); 
             }
-        } // Aquí termina el "using" y se libera la memoria automáticamente.
+        }
     }
+    */
 
     // --------------------------------------------------------
     // MÉTODOS DEL JUEGO
@@ -163,10 +126,11 @@ public class MainMenu : MonoBehaviour
     { 
         SceneManager.LoadScene("nivel1"); 
     }
+
     [System.Serializable]
-public class RespuestaLogin
-{
-    public string mensaje;
-    public string token;
-}
+    public class RespuestaLogin
+    {
+        public string mensaje;
+        public string token;
+    }
 }
