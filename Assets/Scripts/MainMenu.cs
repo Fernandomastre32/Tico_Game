@@ -1,136 +1,69 @@
-// LIBRERÍAS NECESARIAS
 using UnityEngine;
 using UnityEngine.SceneManagement; 
-using UnityEngine.Networking;       
-using TMPro;                        
-using System.Collections;           
-using System.Text;                 
-using System.Text.RegularExpressions; 
+using TMPro; 
 
 public class MainMenu : MonoBehaviour
 {
-    [Header("Pantallas del Menú")]
-    public GameObject optionsMenu; 
-    public GameObject mainMenu;    
-    public GameObject login;       
+    [Header("Paneles de Navegación")]
+    public GameObject mainMenuPanel;    
+    public GameObject optionsMenuPanel; 
 
-    [Header("Campos de Inicio de Sesión")]
-    public TMP_InputField inputUsuarioCorreo; 
-    public TMP_InputField inputPassword;      
-    public TextMeshProUGUI textoError;        
-
-    // La URL de localhost ha sido eliminada para evitar conflictos con el proyecto Tico
-
-    private bool intentandoLogin = false;
+    [Header("Información del Usuario")]
+    public TextMeshProUGUI welcomeText;
 
     private void Start()
     {
-        OpenLogin();
-        if(textoError != null) textoError.text = ""; 
-    }
+        // Al entrar, siempre mostramos el menú principal y ocultamos opciones
+        ShowMainMenu();
 
-    // --------------------------------------------------------
-    // MÉTODOS DE NAVEGACIÓN
-    // --------------------------------------------------------
-    public void OpenOptionsMenu() 
-    { 
-        optionsMenu.SetActive(true); 
-        mainMenu.SetActive(false); 
-        login.SetActive(false); 
-    }
-
-    public void CloseOptionsMenu() 
-    { 
-        optionsMenu.SetActive(false); 
-        mainMenu.SetActive(true); 
-    }
-
-    public void OpenLogin() 
-    { 
-        login.SetActive(true); 
-        mainMenu.SetActive(false); 
-        optionsMenu.SetActive(false); 
-    }
-
-    public void OpenMainMenu() 
-    { 
-        mainMenu.SetActive(true); 
-        optionsMenu.SetActive(false); 
-        login.SetActive(false); 
-    }
-
-    // --------------------------------------------------------
-    // LÓGICA DE VALIDACIÓN (DESACTIVADA PARA LOCALHOST)
-    // --------------------------------------------------------
-    public void LoginAttempt()
-    {
-        // Este método ahora solo muestra un mensaje o puede ser usado para validaciones locales
-        if (intentandoLogin) return;
-
-        string usuarioInput = inputUsuarioCorreo.text;
-        string passwordInput = inputPassword.text;
-
-        if(string.IsNullOrEmpty(usuarioInput) || string.IsNullOrEmpty(passwordInput))
+        // Opcional: Mostrar el nombre del usuario si lo guardamos en el login
+        if (welcomeText != null && PlayerPrefs.HasKey("UserEmail"))
         {
-            if(textoError != null) textoError.text = "Por favor, llena todos los campos.";
-            return; 
-        }
-
-        // Si usas Supabase, llama a AuthManager.Instance.LoginNormal() aquí en lugar de la API vieja
-        Debug.Log("Intento de login local bloqueado. Usa el botón de Google.");
-    }
-
-    /* // COMENTADO PARA EVITAR ERROR CS0103 Y CONFLICTOS DE RED
-    private IEnumerator EnviarLoginAPI(string usuario, string password)
-    {
-        string urlApiLogin = "http://localhost:3000/api/tutores/login-unity";
-        string jsonDatos = "{\"usuario\":\"" + usuario + "\",\"password\":\"" + password + "\"}";
-        byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonDatos);
-
-        using (UnityWebRequest request = new UnityWebRequest(urlApiLogin, "POST"))
-        {
-            request.uploadHandler = new UploadHandlerRaw(bodyRaw);
-            request.downloadHandler = new DownloadHandlerBuffer();
-            request.SetRequestHeader("Content-Type", "application/json");
-
-            yield return request.SendWebRequest();
-
-            intentandoLogin = false;
-
-            if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
-            {
-                Debug.LogError("Error: " + request.error);
-                if(textoError != null) textoError.text = "Error de conexión.";
-            }
-            else
-            {
-                RespuestaLogin datosLogin = JsonUtility.FromJson<RespuestaLogin>(request.downloadHandler.text);
-                PlayerPrefs.SetString("TokenSesion", datosLogin.token);
-                PlayerPrefs.Save();
-                OpenMainMenu(); 
-            }
+            string email = PlayerPrefs.GetString("UserEmail");
+            welcomeText.text = "¡Hola, " + email + "!";
         }
     }
-    */
 
     // --------------------------------------------------------
-    // MÉTODOS DEL JUEGO
+    // NAVEGACIÓN ENTRE PANELES
     // --------------------------------------------------------
-    public void QuitGame() 
-    { 
-        Debug.Log("Saliendo..."); 
-        Application.Quit(); 
-    }
     
+    public void ShowMainMenu() 
+    { 
+        if(mainMenuPanel != null) mainMenuPanel.SetActive(true); 
+        if(optionsMenuPanel != null) optionsMenuPanel.SetActive(false); 
+    }
+
+    public void ShowOptionsMenu() 
+    { 
+        if(optionsMenuPanel != null) optionsMenuPanel.SetActive(true); 
+        if(mainMenuPanel != null) mainMenuPanel.SetActive(false); 
+    }
+
+    // --------------------------------------------------------
+    // ACCIONES DEL JUEGO
+    // --------------------------------------------------------
+
     public void StartGame() 
     { 
+        // Asegúrate de que "nivel1" esté en Build Settings
         SceneManager.LoadScene("nivel1"); 
     }
 
-    [System.Serializable]
-    public class RespuestaLogin
+    public void Logout()
     {
-        public string mensaje;
-        public string token;
+        // Borramos los datos de sesión para que tenga que loguearse de nuevo
+        PlayerPrefs.DeleteKey("TokenSesion");
+        PlayerPrefs.DeleteKey("UserEmail");
+        PlayerPrefs.Save();
+        
+        // Regresamos a la escena de Login (ajusta el nombre según tu escena)
+        SceneManager.LoadScene("LoginScene"); 
+    }
+
+    public void QuitGame() 
+    { 
+        Debug.Log("Cerrando el juego Tico..."); 
+        Application.Quit(); 
     }
 }

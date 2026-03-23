@@ -206,6 +206,6 @@ else Debug.Log("Métricas guardadas!");
 }
 }
 
-public void BotonMenu() { SceneManager.LoadScene("MainMenu"); }
+public void BotonMenu() { SceneManager.LoadScene("Flujo_Menu"); }
 public void BotonSiguiente() { SceneManager.LoadScene("nivel2"); }
 }
