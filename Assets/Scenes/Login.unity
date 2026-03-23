@@ -469,7 +469,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -128.73, y: 163.67}
+  m_AnchoredPosition: {x: -128.72998, y: 163.66998}
   m_SizeDelta: {x: 257.46, y: 327.33}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &172526405
@@ -1176,7 +1176,6 @@ GameObject:
   - component: {fileID: 641347985}
   - component: {fileID: 641347984}
   - component: {fileID: 641347983}
-  - component: {fileID: 641347982}
   m_Layer: 5
   m_Name: Canvas (1)
   m_TagString: Untagged
@@ -1184,24 +1183,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &641347982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 641347981}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5550c7ea4c5a58149bc68e4d04a2b9c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MainMenu
-  optionsMenu: {fileID: 0}
-  mainMenu: {fileID: 0}
-  login: {fileID: 2058598340}
-  inputUsuarioCorreo: {fileID: 0}
-  inputPassword: {fileID: 0}
-  textoError: {fileID: 0}
 --- !u!114 &641347983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1282,6 +1263,7 @@ RectTransform:
   - {fileID: 1270482211}
   - {fileID: 172526404}
   - {fileID: 333208787}
+  - {fileID: 1547358511}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2254,7 +2236,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 200.14, y: 191.99}
+  m_AnchoredPosition: {x: 200.14001, y: 191.98999}
   m_SizeDelta: {x: 400.28, y: 383.98}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1270482212
@@ -2373,6 +2355,56 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1547358509
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1547358511}
+  - component: {fileID: 1547358510}
+  m_Layer: 0
+  m_Name: AuthManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1547358510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547358509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc5ae2feb5a223e4f922457238f0de69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AuthManager
+  supabaseUrl: https://gflucxpldvijkagerlzb.supabase.co
+  supabaseAnonKey: TU_KEY_AQUI
+  emailField: {fileID: 288803721}
+  passwordField: {fileID: 859107094}
+  loginNormalBtn: {fileID: 1256820379}
+  loginGoogleBtn: {fileID: 857765736}
+--- !u!4 &1547358511
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547358509}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -8810.923}
+  m_LocalScale: {x: 97.89914, y: 97.89914, z: 97.89914}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 641347986}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1816105025
 GameObject:

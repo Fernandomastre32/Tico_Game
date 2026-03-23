@@ -12,7 +12,7 @@ public class BotonBurbuja : MonoBehaviour
     void Start()
     {
         // Busca automáticamente al GameManager en la escena para no tener que arrastrarlo a cada globo
-        gameManager = FindObjectOfType<GameManager>();
+        gameManager = FindFirstObjectByType<GameManager>();
         
         boton = GetComponent<Button>();
         imagenBurbuja = GetComponent<Image>();

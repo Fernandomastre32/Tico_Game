@@ -7,7 +7,7 @@ public class DetectorChoquesTico : MonoBehaviour
     void Start()
     {
         // Busca al cerebro en la pantalla
-        gameManager = FindObjectOfType<GameManagerLaberinto>();
+        gameManager = FindFirstObjectByType<GameManagerLaberinto>();
     }
 
     // Esta función se activa SOLA cada vez que el cuerpo físico de Tico choca contra una pared
