@@ -30,18 +30,18 @@ public class MainMenu : MonoBehaviour
     
   public void ShowMainMenu() 
     { 
-        // Nos aseguramos de que el menú principal esté prendido y apagamos el popup de opciones
+        // Encendemos el menú principal y apagamos las opciones
         if(mainMenuPanel != null) mainMenuPanel.SetActive(true); 
         if(optionsMenuPanel != null) optionsMenuPanel.SetActive(false); 
     }
 
     public void ShowOptionsMenu() 
     { 
-        // Solo encendemos el panel de opciones. 
-        // Borramos la línea que apagaba el menú principal para que se quede de fondo.
+        // Encendemos las opciones y APAGAMOS el menú principal por completo
         if(optionsMenuPanel != null) optionsMenuPanel.SetActive(true); 
+        if(mainMenuPanel != null) mainMenuPanel.SetActive(false); 
     }
-    // --------------------------------------------------------
+    //-----------------------------------------------
     // ACCIONES DEL JUEGO
     // --------------------------------------------------------
 
