@@ -1,22 +1,11 @@
 using UnityEngine;
 
-public class DetectorChoquesTico : MonoBehaviour
-{
-    private GameManagerLaberinto gameManager;
+public class Detector_ChoquesTico : MonoBehaviour {
+    public GameManagerLaberinto manager; // <-- Asegúrate que NO tenga "_"
 
-    void Start()
-    {
-        // Busca al cerebro en la pantalla
-        gameManager = FindFirstObjectByType<GameManagerLaberinto>();
-    }
-
-    // Esta función se activa SOLA cada vez que el cuerpo físico de Tico choca contra una pared
-    private void OnCollisionEnter2D(Collision2D choque)
-    {
-        if (gameManager != null)
-        {
-            // Le avisa al cerebro que sume un golpe
-            gameManager.RegistrarGolpePared();
+    void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.CompareTag("Pared")) {
+            manager.RegistrarGolpePared();
         }
     }
 }

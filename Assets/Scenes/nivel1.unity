@@ -1792,8 +1792,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -962, y: -350.00006}
-  m_SizeDelta: {x: 258, y: 291}
+  m_AnchoredPosition: {x: -949.05, y: -319.75}
+  m_SizeDelta: {x: 283.89, y: 351.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &345974757
 MonoBehaviour:
@@ -2763,6 +2763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 935da0be2e168b74d90e0cb36ad12914, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  tipoJuegoID: 1
   overlayInstrucciones: {fileID: 1925368749}
   contenedorJuego: {fileID: 1270466888}
   imagenObjetivoArriba: {fileID: 625592466}
@@ -7311,7 +7312,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1038, y: -383.5}
+  m_AnchoredPosition: {x: -984, y: -350}
   m_SizeDelta: {x: 410, y: 358}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1991434592
