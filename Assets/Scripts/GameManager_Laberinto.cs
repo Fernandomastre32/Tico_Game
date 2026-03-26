@@ -31,30 +31,25 @@ public class GameManagerLaberinto : MonoBehaviour
     private string supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdmbHVjeHBsZHZpamthZ2VybHpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM0NDk2OTQsImV4cCI6MjA4OTAyNTY5NH0.vYYELn2ofGJRHPsFE4ZmCsq9a6-DMVLNQ6vn7zMc4vo";
     private Supabase.Client _supabase;
 
- async void Awake()
+ void Awake() // Quitamos el async de aquí
     {
-        // 1. ESTADO INICIAL VISUAL
-        
-        // Mantenemos el laberinto VISIBLE para que Android renderice algo de inmediato.
-        // El niño verá el mapa bajo el letrero de instrucciones, ¡es mucho mejor!
-        if (contenedorJuego != null) contenedorJuego.SetActive(true); // <--- CAMBIO AQUÍ: ¡No lo apagues!
+        overlayInstrucciones.SetActive(true);
+        panelResultados.SetActive(false);
+        if (joystick != null) joystick.SetActive(false);
+        if (contenedorJuego != null) contenedorJuego.SetActive(true);
 
-        overlayInstrucciones.SetActive(true); // Mostrar instrucciones
-        panelResultados.SetActive(false);    // Ocultar resultados
-        
-        // El joystick SÍ lo apagamos para que no se vea sobre el letrero azul
-        if (joystick != null) joystick.SetActive(false); 
+        // Llamamos a la conexión sin esperar (Fire and forget)
+        _ = ConectarSupabase(); 
+    }
 
-        // 2. CONEXIÓN SUPABASE (Sin bloquear el inicio del juego)
+    private async Task ConectarSupabase()
+    {
         try {
             var options = new SupabaseOptions { AutoRefreshToken = true };
             _supabase = new Supabase.Client(supabaseUrl, supabaseAnonKey, options);
             await _supabase.InitializeAsync();
-            Debug.Log("Supabase conectado en Laberinto");
-        } catch (System.Exception ex) {
-            // Si no hay internet, el juego debe seguir. Solo damos un aviso.
-            Debug.LogWarning("Supabase offline, el juego sigue.");
-        }
+            Debug.Log("Supabase listo en segundo plano");
+        } catch { /* Si falla, no detiene el juego */ }
     }
 
     // Se llama desde el botón "Entendido" de las instrucciones
