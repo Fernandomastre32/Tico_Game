@@ -48,7 +48,7 @@ public class MainMenu : MonoBehaviour
     public void StartGame() 
     { 
         // Asegúrate de que "nivel1" esté en Build Settings
-        SceneManager.LoadScene("nivel1"); 
+        SceneManager.LoadScene("flujo_Niveles"); 
     }
 
     public void Logout()

@@ -2053,7 +2053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovimientoTicoCurvo
   tico: {fileID: 4079088}
-  velocidad: 60
+  velocidad: 5
   nombreBaseEscena: nivel1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
