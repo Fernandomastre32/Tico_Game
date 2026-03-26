@@ -1185,9 +1185,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 203876261}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b62ab3627ae562e4fa63b54927d4c582, type: 3}
+  m_Script: {fileID: 11500000, guid: 97920cc2067641144bb0db77b587c44b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BotonBurbuja
+  m_EditorClassIdentifier: Assembly-CSharp::BotonBurbujaNivel3
+  tiempoEspera: 5
+  minX: -400
+  maxX: 400
+  minY: -200
+  maxY: 200
 --- !u!1 &221188129
 GameObject:
   m_ObjectHideFlags: 0
@@ -1421,8 +1426,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 757033566}
+        m_TargetAssemblyTypeName: GameManagerNivel3, Assembly-CSharp
         m_MethodName: IniciarJuego
         m_Mode: 1
         m_Arguments:
@@ -2308,7 +2313,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5350565872014852309, guid: 920bcb940de3bf34c8cfe420dbb1f805, type: 3}
+  m_Sprite: {fileID: -8026405981537938676, guid: b13c75208a5ab834e868edfc1e23c326, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2350,9 +2355,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 590708507}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b62ab3627ae562e4fa63b54927d4c582, type: 3}
+  m_Script: {fileID: 11500000, guid: 97920cc2067641144bb0db77b587c44b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BotonBurbuja
+  m_EditorClassIdentifier: Assembly-CSharp::BotonBurbujaNivel3
+  tiempoEspera: 2
+  minX: -400
+  maxX: 400
+  minY: -200
+  maxY: 200
 --- !u!1 &625592464
 GameObject:
   m_ObjectHideFlags: 0
@@ -2776,32 +2786,33 @@ MonoBehaviour:
   imagenTico: {fileID: 345974757}
   textoDialogoTico: {fileID: 431259714}
   spriteNeutral: {fileID: 5283724447531564307, guid: be73b92862d27694ea3421c27d2c7606, type: 3}
-  fraseNeutral: "\xA1R\xE1pido!, revienta las que puedas"
   tiempoReaccion: 2
   spritesFelices:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: -8696486965146609089, guid: 4db4139d21ef6a943968236e627e0795, type: 3}
+  - {fileID: 5283724447531564307, guid: be73b92862d27694ea3421c27d2c7606, type: 3}
+  - {fileID: 8151087479177948525, guid: d82d99da30ebc204aaaf26ad122663e8, type: 3}
   spritesAnimo:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 3401010115455900850, guid: 096829476a49acc429fe912030ad6369, type: 3}
+  - {fileID: 661230639835047841, guid: 7905d6213aba999448718a46c7e0e3cf, type: 3}
+  - {fileID: -9082081371277356566, guid: 66216a34c127e6b4b963e5e7b12d0628, type: 3}
   frasesCorrectas:
   - "\xA1Eso!"
   - "\xA1Vas muy r\xE1pido!"
   - "\xA1Sigue as\xED!"
+  fraseNeutral: "\xA1R\xE1pido!, revienta las que puedas"
   frasesAnimo:
   - "\xA1Casi!, otra vez"
   - "\xA1No te detengas!"
   - "\xA1Sigue buscando!"
   secuenciaObjetivos:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 5350565872014852309, guid: 920bcb940de3bf34c8cfe420dbb1f805, type: 3}
+  - {fileID: -8026405981537938676, guid: b13c75208a5ab834e868edfc1e23c326, type: 3}
+  - {fileID: 4810680744198336871, guid: 8ae44276a6288fd498e820d5bd957c09, type: 3}
+  - {fileID: -4858656129405475584, guid: 061223f79d6841b49ae4ef01ee61c5d5, type: 3}
+  - {fileID: -8559976165387739596, guid: 92e5d0c9930a84941bfef894c4f50172, type: 3}
+  - {fileID: -3186800335751085725, guid: d24be160179c92843bc04468705cbbcb, type: 3}
+  - {fileID: -6438674402652113462, guid: 536d4e699f8b0e6419126655feea5bde, type: 3}
+  - {fileID: -6390778460954189384, guid: ebcb5e7b20272294a8e6cc9a02531bb4, type: 3}
 --- !u!1 &791217600
 GameObject:
   m_ObjectHideFlags: 0
@@ -2814,8 +2825,8 @@ GameObject:
   - component: {fileID: 791217604}
   - component: {fileID: 791217603}
   - component: {fileID: 791217602}
-  - component: {fileID: 791217605}
   - component: {fileID: 791217606}
+  - component: {fileID: 791217605}
   m_Layer: 5
   m_Name: Globo_Amarillo
   m_TagString: Untagged
@@ -2949,9 +2960,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 791217600}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b62ab3627ae562e4fa63b54927d4c582, type: 3}
+  m_Script: {fileID: 11500000, guid: 97920cc2067641144bb0db77b587c44b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BotonBurbuja
+  m_EditorClassIdentifier: Assembly-CSharp::BotonBurbujaNivel3
+  tiempoEspera: 5
+  minX: -400
+  maxX: 400
+  minY: -200
+  maxY: 200
 --- !u!1 &853761512
 GameObject:
   m_ObjectHideFlags: 0
@@ -3236,9 +3252,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 880929442}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b62ab3627ae562e4fa63b54927d4c582, type: 3}
+  m_Script: {fileID: 11500000, guid: 97920cc2067641144bb0db77b587c44b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BotonBurbuja
+  m_EditorClassIdentifier: Assembly-CSharp::BotonBurbujaNivel3
+  tiempoEspera: 5
+  minX: -400
+  maxX: 400
+  minY: -200
+  maxY: 200
 --- !u!1 &883854519
 GameObject:
   m_ObjectHideFlags: 0
@@ -3461,9 +3482,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 905060975}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b62ab3627ae562e4fa63b54927d4c582, type: 3}
+  m_Script: {fileID: 11500000, guid: 97920cc2067641144bb0db77b587c44b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BotonBurbuja
+  m_EditorClassIdentifier: Assembly-CSharp::BotonBurbujaNivel3
+  tiempoEspera: 5
+  minX: -400
+  maxX: 400
+  minY: -200
+  maxY: 200
 --- !u!1 &967336436
 GameObject:
   m_ObjectHideFlags: 0
@@ -4040,9 +4066,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1033044640}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b62ab3627ae562e4fa63b54927d4c582, type: 3}
+  m_Script: {fileID: 11500000, guid: 97920cc2067641144bb0db77b587c44b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BotonBurbuja
+  m_EditorClassIdentifier: Assembly-CSharp::BotonBurbujaNivel3
+  tiempoEspera: 5
+  minX: -400
+  maxX: 400
+  minY: -200
+  maxY: 200
 --- !u!1 &1038780481
 GameObject:
   m_ObjectHideFlags: 0
@@ -4609,7 +4640,7 @@ GameObject:
   - component: {fileID: 1185558523}
   - component: {fileID: 1185558522}
   - component: {fileID: 1185558521}
-  - component: {fileID: 1185558520}
+  - component: {fileID: 1185558524}
   - component: {fileID: 1185558519}
   m_Layer: 5
   m_Name: Globo_Amarillo (7)
@@ -4653,18 +4684,6 @@ MonoBehaviour:
   velocidad: 2
   amplitudX: 30
   amplitudY: 50
---- !u!114 &1185558520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1185558517}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b62ab3627ae562e4fa63b54927d4c582, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BotonBurbuja
 --- !u!114 &1185558521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4747,6 +4766,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1185558517}
   m_CullTransparentMesh: 1
+--- !u!114 &1185558524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185558517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97920cc2067641144bb0db77b587c44b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BotonBurbujaNivel3
+  tiempoEspera: 5
+  minX: -400
+  maxX: 400
+  minY: -200
+  maxY: 200
 --- !u!1 &1220424394
 GameObject:
   m_ObjectHideFlags: 0
@@ -5531,7 +5567,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ss
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -7729,8 +7765,8 @@ GameObject:
   - component: {fileID: 2054842418}
   - component: {fileID: 2054842417}
   - component: {fileID: 2054842416}
-  - component: {fileID: 2054842419}
   - component: {fileID: 2054842421}
+  - component: {fileID: 2054842419}
   - component: {fileID: 2054842420}
   m_Layer: 5
   m_Name: Globo_Amarillo (5)
@@ -7880,9 +7916,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2054842414}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b62ab3627ae562e4fa63b54927d4c582, type: 3}
+  m_Script: {fileID: 11500000, guid: 97920cc2067641144bb0db77b587c44b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BotonBurbuja
+  m_EditorClassIdentifier: Assembly-CSharp::BotonBurbujaNivel3
+  tiempoEspera: 5
+  minX: -400
+  maxX: 400
+  minY: -200
+  maxY: 200
 --- !u!1 &2094256625
 GameObject:
   m_ObjectHideFlags: 0

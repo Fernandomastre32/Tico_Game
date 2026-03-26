@@ -1,0 +1,611 @@
+fileFormatVersion: 2
+guid: d82d99da30ebc204aaaf26ad122663e8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8151087479177948525
+    second: Tico_Orgulloso_0
+  - first:
+      213: -1003913009941087398
+    second: Tico_Orgulloso_1
+  - first:
+      213: 8630168516148441030
+    second: Tico_Orgulloso_2
+  - first:
+      213: -8715460852428017927
+    second: Tico_Orgulloso_3
+  - first:
+      213: 6317731216052649435
+    second: Tico_Orgulloso_4
+  - first:
+      213: 2912626695441470073
+    second: Tico_Orgulloso_5
+  - first:
+      213: -5027813803603678813
+    second: Tico_Orgulloso_6
+  - first:
+      213: -3870332920577883465
+    second: Tico_Orgulloso_7
+  - first:
+      213: -8427397283431901384
+    second: Tico_Orgulloso_8
+  - first:
+      213: 5750185099940985298
+    second: Tico_Orgulloso_9
+  - first:
+      213: 946188395741450150
+    second: Tico_Orgulloso_10
+  - first:
+      213: 6044686094156251821
+    second: Tico_Orgulloso_11
+  - first:
+      213: 4720530301293645970
+    second: Tico_Orgulloso_12
+  - first:
+      213: 5785146360832654368
+    second: Tico_Orgulloso_13
+  - first:
+      213: 8837989224806759570
+    second: Tico_Orgulloso_14
+  - first:
+      213: 9085469869931848300
+    second: Tico_Orgulloso_15
+  - first:
+      213: -4892133242183596283
+    second: Tico_Orgulloso_16
+  - first:
+      213: 7890187179704878094
+    second: Tico_Orgulloso_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Tico_Orgulloso_0
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 218
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6d298140ea7e1170800000000000000
+      internalID: 8151087479177948525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tico_Orgulloso_1
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 222
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5b7119bf626112f0800000000000000
+      internalID: -1003913009941087398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tico_Orgulloso_2
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 218
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cfa9c47a8484c770800000000000000
+      internalID: 8630168516148441030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tico_Orgulloso_3
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 163
+        width: 47
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fe643df7867c0780800000000000000
+      internalID: -8715460852428017927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tico_Orgulloso_4
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 177
+        width: 30
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bddf63771171da750800000000000000
+      internalID: 6317731216052649435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tico_Orgulloso_5
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 8
+        width: 128
+        height: 207
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 972db193c8abb6820800000000000000
+      internalID: 2912626695441470073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tico_Orgulloso_6
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 210
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a9a56febfd993ab0800000000000000
+      internalID: -5027813803603678813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tico_Orgulloso_7
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 158
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b28472f6b0d94ac0800000000000000
+      internalID: -3870332920577883465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tico_Orgulloso_8
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 157
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83713fb22dedb0b80800000000000000
+      internalID: -8427397283431901384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tico_Orgulloso_9
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 100
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d9f9b2f1e2cccf40800000000000000
+      internalID: 5750185099940985298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tico_Orgulloso_10
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 122
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6af04c23559812d00800000000000000
+      internalID: 946188395741450150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tico_Orgulloso_11
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 128
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da24decf9f903e350800000000000000
+      internalID: 6044686094156251821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tico_Orgulloso_12
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 92
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29053107c41b28140800000000000000
+      internalID: 4720530301293645970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tico_Orgulloso_13
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 92
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02cf213d6f7f84050800000000000000
+      internalID: 5785146360832654368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tico_Orgulloso_14
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 76
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29c3651df58d6aa70800000000000000
+      internalID: 8837989224806759570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tico_Orgulloso_15
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 64
+        width: 17
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c626dc6b5b2161e70800000000000000
+      internalID: 9085469869931848300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tico_Orgulloso_16
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 66
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50744c16cb6ab1cb0800000000000000
+      internalID: -4892133242183596283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tico_Orgulloso_17
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 18
+        width: 18
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0486a99f639f7d60800000000000000
+      internalID: 7890187179704878094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Tico_Orgulloso_0: 8151087479177948525
+      Tico_Orgulloso_1: -1003913009941087398
+      Tico_Orgulloso_10: 946188395741450150
+      Tico_Orgulloso_11: 6044686094156251821
+      Tico_Orgulloso_12: 4720530301293645970
+      Tico_Orgulloso_13: 5785146360832654368
+      Tico_Orgulloso_14: 8837989224806759570
+      Tico_Orgulloso_15: 9085469869931848300
+      Tico_Orgulloso_16: -4892133242183596283
+      Tico_Orgulloso_17: 7890187179704878094
+      Tico_Orgulloso_2: 8630168516148441030
+      Tico_Orgulloso_3: -8715460852428017927
+      Tico_Orgulloso_4: 6317731216052649435
+      Tico_Orgulloso_5: 2912626695441470073
+      Tico_Orgulloso_6: -5027813803603678813
+      Tico_Orgulloso_7: -3870332920577883465
+      Tico_Orgulloso_8: -8427397283431901384
+      Tico_Orgulloso_9: 5750185099940985298
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
