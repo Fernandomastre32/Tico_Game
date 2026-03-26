@@ -638,7 +638,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 371772366}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2140505179}
+        m_TargetAssemblyTypeName: MovimientoTicoCurvo, Assembly-CSharp
+        m_MethodName: SeleccionarNivel
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 371772363}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &371772366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -690,7 +702,7 @@ GameObject:
   - component: {fileID: 413794007}
   - component: {fileID: 413794006}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Regreso_Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -759,7 +771,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 413794007}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2140505179}
+        m_TargetAssemblyTypeName: MovimientoTicoCurvo, Assembly-CSharp
+        m_MethodName: RegresarAlMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &413794007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1441,7 +1465,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1521472668}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2140505179}
+        m_TargetAssemblyTypeName: MovimientoTicoCurvo, Assembly-CSharp
+        m_MethodName: SeleccionarNivel
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1521472665}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1521472668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2054,7 +2090,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MovimientoTicoCurvo
   tico: {fileID: 4079088}
   velocidad: 5
-  nombreBaseEscena: nivel1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
