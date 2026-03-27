@@ -202,5 +202,5 @@ public string fraseNeutral = "¡Rápido!, revienta las que puedas";     public s
     }
     private void VolverANeutral() { if(imagenTico != null) imagenTico.sprite = spriteNeutral; if(textoDialogoTico != null) textoDialogoTico.text = fraseNeutral; }
     public void BotonMenu() { SceneManager.LoadScene("Flujo_Menu"); }
-    public void BotonReiniciar() { SceneManager.LoadScene(SceneManager.GetActiveScene().name); }
+    public void BotonSiguiente() { SceneManager.LoadScene("flujo_Niveles"); }
 }

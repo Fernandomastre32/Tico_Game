@@ -1,22 +1,10 @@
 fileFormatVersion: 2
-guid: 4db4139d21ef6a943968236e627e0795
+guid: d5af2aa10d49a0a4bbf8d71cb952fd8b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8696486965146609089
-    second: Tico_Pulgares_0
-  - first:
-      213: 3039932267947121739
-    second: Tico_Pulgares_1
-  - first:
-      213: -4318943658429521961
-    second: Tico_Pulgares_2
-  - first:
-      213: 4543855958084543150
-    second: Tico_Pulgares_3
-  - first:
-      213: -2252067809797671059
-    second: Tico_Pulgares_4
+      213: -44140310400090463
+    second: Captura de pantalla 2026-03-26 221757_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -58,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -138,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tico_Pulgares_0
+      name: Captura de pantalla 2026-03-26 221757_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 178
-        height: 222
+        x: 33
+        y: 37
+        width: 997
+        height: 319
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,96 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f3a1f906e2fdf4780800000000000000
-      internalID: -8696486965146609089
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tico_Pulgares_1
-      rect:
-        serializedVersion: 2
-        x: 25
-        y: 173
-        width: 22
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b4c5c3c9a42003a20800000000000000
-      internalID: 3039932267947121739
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tico_Pulgares_2
-      rect:
-        serializedVersion: 2
-        x: 162
-        y: 181
-        width: 31
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7dfd16a10a70014c0800000000000000
-      internalID: -4318943658429521961
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tico_Pulgares_3
-      rect:
-        serializedVersion: 2
-        x: 176
-        y: 149
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ea2eb246be40f0f30800000000000000
-      internalID: 4543855958084543150
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tico_Pulgares_4
-      rect:
-        serializedVersion: 2
-        x: 17
-        y: 107
-        width: 27
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d67faea424c0fb0e0800000000000000
-      internalID: -2252067809797671059
+      spriteID: 1aeb35e1f9e236ff0800000000000000
+      internalID: -44140310400090463
       vertices: []
       indices: 
       edges: []
@@ -251,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -261,11 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Tico_Pulgares_0: -8696486965146609089
-      Tico_Pulgares_1: 3039932267947121739
-      Tico_Pulgares_2: -4318943658429521961
-      Tico_Pulgares_3: 4543855958084543150
-      Tico_Pulgares_4: -2252067809797671059
+      Captura de pantalla 2026-03-26 221757_0: -44140310400090463
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

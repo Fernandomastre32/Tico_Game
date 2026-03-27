@@ -169,5 +169,5 @@ public class GameManager : MonoBehaviour
     private bool QuedanBurbujasDeColor(Sprite colorBuscado, GameObject burbujaIgnorada) { BotonBurbuja[] todasLasBurbujas = FindObjectsByType<BotonBurbuja>(FindObjectsSortMode.None); foreach (BotonBurbuja burbuja in todasLasBurbujas) { if (burbuja.gameObject.activeInHierarchy && burbuja.gameObject != burbujaIgnorada && burbuja.GetComponent<Image>().sprite == colorBuscado) return true; } return false; }
     private void ActualizarImagenObjetivo() { if(indiceActual < secuenciaObjetivos.Length) { imagenObjetivoArriba.sprite = secuenciaObjetivos[indiceActual]; momentoAparicionObjetivo = Time.time; } }
     public void BotonMenu() { SceneManager.LoadScene("Flujo_Menu"); }
-    public void BotonSiguiente() { SceneManager.LoadScene("nivel2"); }
+    public void BotonSiguiente() { SceneManager.LoadScene("flujo_Niveles"); }
 }
