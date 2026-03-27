@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b756bf35b6dbf0748ad66f30166b3f1e
+guid: e78bae8b011ddc84a9f174ae915d6f9e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1668435673290844041
-    second: Captura de pantalla 2026-03-14 230511_0
+      213: -8841739543400727556
+    second: Captura de pantalla 2026-03-27 082330_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  alignment: 9
+  spritePivot: {x: 0.60930234, y: 0.6766169}
+  spritePixelsToUnits: 75
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,7 +97,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -110,7 +110,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -126,67 +126,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pilar_Azul_0
+      name: Captura de pantalla 2026-03-27 082330_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 329
-        width: 126
-        height: 164
+        x: 21
+        y: 11
+        width: 168
+        height: 169
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: e94163b5f409046448d2dfe88b1d083f
-      internalID: -2011901755
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pilar_Azul_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 165
-        width: 126
-        height: 164
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8608a31c530b50d43b7615e930facf23
-      internalID: 611477089
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pilar_Azul_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1
-        width: 126
-        height: 164
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 72856add026a37c4f8eabd743d5c041a
-      internalID: 1096786307
+      spriteID: cfb33171bb4db4580800000000000000
+      internalID: -8841739543400727556
       vertices: []
       indices: 
       edges: []
@@ -195,21 +151,17 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6114006c15f438c45bb2cdee43389a35
-    internalID: 0
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":3.0},"gridSpriteSize":{"x":126.0,"y":164.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      Pilar_Azul_0: -2011901755
-      Pilar_Azul_1: 611477089
-      Pilar_Azul_2: 1096786307
+      Captura de pantalla 2026-03-27 082330_0: -8841739543400727556
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

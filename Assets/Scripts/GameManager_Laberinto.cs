@@ -12,10 +12,10 @@ public class GameManagerLaberinto : MonoBehaviour
     public int tipoJuegoID = 2; // ID 2 para Laberinto en Supabase
 
     [Header("Contenedores de Jerarquía")]
-    public GameObject contenedorJuego; // Arrastra aquí "Ejercicio_Nivel"
-    public GameObject overlayInstrucciones; // Arrastra aquí tu panel azul
-    public GameObject panelResultados; 
-    public GameObject joystick; 
+    public GameObject contenedorJuego; // El objeto "Ejercicio_Nivel"
+    public GameObject overlayInstrucciones; // El panel azul inicial
+    public GameObject panelResultados; // El panel de victoria
+    public GameObject joystick; // El joystick de la UI
 
     [Header("Textos de Resultados")]
     public TMP_Text textoTiempo; 
@@ -31,14 +31,17 @@ public class GameManagerLaberinto : MonoBehaviour
     private string supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdmbHVjeHBsZHZpamthZ2VybHpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM0NDk2OTQsImV4cCI6MjA4OTAyNTY5NH0.vYYELn2ofGJRHPsFE4ZmCsq9a6-DMVLNQ6vn7zMc4vo";
     private Supabase.Client _supabase;
 
- void Awake() // Quitamos el async de aquí
+    void Awake() 
     {
+        // 1. ESTADO INICIAL: Todo apagado excepto las instrucciones
         overlayInstrucciones.SetActive(true);
         panelResultados.SetActive(false);
+        
         if (joystick != null) joystick.SetActive(false);
-        if (contenedorJuego != null) contenedorJuego.SetActive(true);
+        
+        // BUG FIX: Apagamos el contenedor al inicio para que no interfiera con el Canvas
+        if (contenedorJuego != null) contenedorJuego.SetActive(false); 
 
-        // Llamamos a la conexión sin esperar (Fire and forget)
         _ = ConectarSupabase(); 
     }
 
@@ -49,29 +52,29 @@ public class GameManagerLaberinto : MonoBehaviour
             _supabase = new Supabase.Client(supabaseUrl, supabaseAnonKey, options);
             await _supabase.InitializeAsync();
             Debug.Log("Supabase listo en segundo plano");
-        } catch { /* Si falla, no detiene el juego */ }
+        } catch { /* Conexión silenciosa */ }
     }
 
-    // Se llama desde el botón "Entendido" de las instrucciones
-   
     void Update()
     {
         if (juegoActivo) tiempoJugado += Time.deltaTime;
     }
 
-    // Se llama desde el botón "Entendido" de las instrucciones
+    // Se llama desde el botón "Entendido" del panel azul
     public void IniciarJuego() 
     {
-        overlayInstrucciones.SetActive(false); // Quitar letrero azul
+        overlayInstrucciones.SetActive(false); // Quitamos letrero azul
         
-        // Ya no es necesario prender el contenedorJuego porque ya estaba prendido
+        // BUG FIX: Encendemos el mundo del juego ahora que el usuario dio click
+        if (contenedorJuego != null) contenedorJuego.SetActive(true); 
         
-        if (joystick != null) joystick.SetActive(true); // Activar controles para poder jugar
+        if (joystick != null) joystick.SetActive(true); // Aparece el control
         
         juegoActivo = true;
         tiempoJugado = 0f;
         conteoGolpes = 0;
     }
+
     public void RegistrarGolpePared() 
     {
         if (juegoActivo)
@@ -84,10 +87,11 @@ public class GameManagerLaberinto : MonoBehaviour
     public void TerminarJuego() 
     {
         juegoActivo = false; 
+        
         if (joystick != null) joystick.SetActive(false);
         if (contenedorJuego != null) contenedorJuego.SetActive(false); // Apagamos el mundo al ganar
 
-        // Formatear tiempo para la UI
+        // Formatear tiempo
         int minutos = Mathf.FloorToInt(tiempoJugado / 60F);
         int segundos = Mathf.FloorToInt(tiempoJugado % 60F);
         
@@ -96,12 +100,10 @@ public class GameManagerLaberinto : MonoBehaviour
 
         panelResultados.SetActive(true);
 
-        // Cálculos para métricas
         int nivelFrustracion = Mathf.Clamp(1 + (conteoGolpes / 2), 1, 10);
         int pId = PlayerPrefs.GetInt("PacienteID", 1);
         int cId = PlayerPrefs.GetInt("CitaID", 1);
 
-        // Enviar a Supabase
         _ = EnviarMetricasSupabase(pId, cId, nivelFrustracion, Mathf.RoundToInt(tiempoJugado * 1000));
     }
 
@@ -115,13 +117,13 @@ public class GameManagerLaberinto : MonoBehaviour
                 Frustracion = frustracion,
                 LatenciaMs = 0, 
                 PresionToque = 1.0f,
-                TiempoReaccionMs = tiempoMs, // Usamos este campo para el tiempo total en laberinto
+                TiempoReaccionMs = tiempoMs,
                 TipoJuegoId = tipoJuegoID
             };
             await _supabase.From<MetricaIA>().Insert(metrica);
-            Debug.Log("¡Métricas del Laberinto enviadas correctamente!");
+            Debug.Log("Métricas enviadas correctamente");
         } catch (System.Exception ex) {
-            Debug.LogError("Error al enviar a Supabase: " + ex.Message);
+            Debug.LogError("Error Supabase: " + ex.Message);
         }
     }
 
