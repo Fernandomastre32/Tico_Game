@@ -12,6 +12,16 @@ public class MovimientoTicoCurvo : MonoBehaviour
     
     private bool moviendose = false;
 
+    // 1. Agregamos Start para que el mapa tenga música desde el inicio
+    private void Start()
+    {
+        if (AudioManager.instance != null)
+        {
+            // Mientras Tico está en el mapa, mantenemos la música del Menú/Ambiente
+            AudioManager.instance.CambiarMusica(AudioManager.instance.musicaMenu);
+        }
+    }
+
     // Esta función la llama el botón (OnClick)
     public void SeleccionarNivel(GameObject contenedorCamino)
     {
@@ -74,6 +84,8 @@ public class MovimientoTicoCurvo : MonoBehaviour
         if (!string.IsNullOrEmpty(escenaFinal))
         {
             Debug.Log("Tico llegó. Cargando escena: " + escenaFinal);
+            
+            // Opcional: Podrías poner un sonido de "¡Llegamos!" aquí antes de cargar
             SceneManager.LoadScene(escenaFinal);
         }
         else
@@ -83,7 +95,7 @@ public class MovimientoTicoCurvo : MonoBehaviour
     }
 
     public void RegresarAlMenu()
-{
-    SceneManager.LoadScene("Flujo_Menu");
-}
+    {
+        SceneManager.LoadScene("Flujo_Menu");
+    }
 }

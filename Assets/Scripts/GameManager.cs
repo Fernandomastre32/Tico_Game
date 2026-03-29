@@ -67,7 +67,16 @@ public class GameManager : MonoBehaviour
             await _supabase.InitializeAsync();
         } catch (System.Exception ex) { Debug.LogError("Error Supabase: " + ex.Message); }
     }
-
+    void Start()
+    {
+        // Llamamos al AudioManager que viene desde el Login
+        if (AudioManager.instance != null)
+        {
+            // Cambiamos a la pista del nivel (Nivel 1 o la que asignaras para burbujas)
+            // Esto hará que la música suene mientras están las instrucciones puestas.
+            AudioManager.instance.CambiarMusica(AudioManager.instance.musicaNivel1);
+        }
+    }
     void Update() { if (juegoActivo) tiempoJugado += Time.deltaTime; }
 
     public void IniciarJuego()

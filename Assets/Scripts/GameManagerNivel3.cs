@@ -36,7 +36,8 @@ public class GameManagerNivel3 : MonoBehaviour
     public Sprite[] spritesFelices; 
     public Sprite[] spritesAnimo; 
     public string[] frasesCorrectas = { "¡Eso!", "¡Vas muy rápido!", "¡Genial!" };
-public string fraseNeutral = "¡Rápido!, revienta las que puedas";     public string[] frasesAnimo = { "¡Casi!, ese no es", "¡Busca el color de arriba!", "¡Tú puedes!" };
+    public string fraseNeutral = "¡Rápido!, revienta las que puedas"; 
+    public string[] frasesAnimo = { "¡Casi!, ese no es", "¡Busca el color de arriba!", "¡Tú puedes!" };
 
     [Header("Lógica del Nivel")]
     public Sprite[] secuenciaObjetivos; 
@@ -67,6 +68,18 @@ public string fraseNeutral = "¡Rápido!, revienta las que puedas";     public s
             _supabase = new Supabase.Client(supabaseUrl, supabaseAnonKey, options);
             await _supabase.InitializeAsync();
         } catch (System.Exception ex) { Debug.LogError("Error Supabase: " + ex.Message); }
+    }
+
+    // NUEVA FUNCIÓN START: Se ejecuta justo después de Awake y antes del primer frame
+    void Start()
+    {
+        // Llamamos al AudioManager que viene desde el Login
+        if (AudioManager.instance != null)
+        {
+            // Cambiamos a la pista del nivel (Nivel 1 o la que asignaras para burbujas)
+            // Esto hará que la música suene mientras están las instrucciones puestas.
+            AudioManager.instance.CambiarMusica(AudioManager.instance.musicaNivel1);
+        }
     }
 
     void Update() 
@@ -102,12 +115,10 @@ public string fraseNeutral = "¡Rápido!, revienta las que puedas";     public s
         }
     }
 
-    // AHORA DEVUELVE BOOL: True si es el color correcto, False si no
     public bool EvaluarBurbujaTocada(Sprite spriteBurbuja)
     {
         if (!juegoActivo) return false; 
 
-        // 1. Verificar si el color coincide con el objetivo de arriba
         if (spriteBurbuja == secuenciaObjetivos[indiceActual])
         {
             sumaTiempoReaccion += (Time.time - momentoAparicionObjetivo);
@@ -115,17 +126,15 @@ public string fraseNeutral = "¡Rápido!, revienta las que puedas";     public s
             conteoCorrectas++; 
             DispararReaccion(true); 
             
-            // 2. Revisar si quedan más burbujas de este color en pantalla
-            // Usamos un pequeño delay para que la burbuja actual "desaparezca" antes de contar
             Invoke("CheckSiguienteObjetivo", 0.1f);
             
-            return true; // Permitir que la burbuja reviente
+            return true; 
         }
         else
         {
             conteoIncorrectas++; 
             DispararReaccion(false);
-            return false; // NO permitir que la burbuja reviente
+            return false; 
         }
     }
 

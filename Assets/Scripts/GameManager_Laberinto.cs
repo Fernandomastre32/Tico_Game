@@ -44,7 +44,16 @@ public class GameManagerLaberinto : MonoBehaviour
 
         _ = ConectarSupabase(); 
     }
-
+    void Start()
+    {
+        // Llamamos al AudioManager que viene desde el Login
+        if (AudioManager.instance != null)
+        {
+            // Cambiamos a la pista del nivel (Nivel 1 o la que asignaras para burbujas)
+            // Esto hará que la música suene mientras están las instrucciones puestas.
+            AudioManager.instance.CambiarMusica(AudioManager.instance.musicaNivel2);
+        }
+    }
     private async Task ConectarSupabase()
     {
         try {
@@ -54,6 +63,7 @@ public class GameManagerLaberinto : MonoBehaviour
             Debug.Log("Supabase listo en segundo plano");
         } catch { /* Conexión silenciosa */ }
     }
+
 
     void Update()
     {
