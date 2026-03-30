@@ -9,13 +9,13 @@ using Supabase;
 public class GameManagerLaberinto : MonoBehaviour 
 {
     [Header("Configuración del Tipo de Juego")]
-    public int tipoJuegoID = 2; // ID 2 para Laberinto en Supabase
+    public int tipoJuegoID = 2; // ID 2 para Laberinto
 
     [Header("Contenedores de Jerarquía")]
-    public GameObject contenedorJuego; // El objeto "Ejercicio_Nivel"
-    public GameObject overlayInstrucciones; // El panel azul inicial
-    public GameObject panelResultados; // El panel de victoria
-    public GameObject joystick; // El joystick de la UI
+    public GameObject contenedorJuego; 
+    public GameObject overlayInstrucciones; 
+    public GameObject panelResultados; 
+    public GameObject joystick; 
 
     [Header("Textos de Resultados")]
     public TMP_Text textoTiempo; 
@@ -33,27 +33,23 @@ public class GameManagerLaberinto : MonoBehaviour
 
     void Awake() 
     {
-        // 1. ESTADO INICIAL: Todo apagado excepto las instrucciones
         overlayInstrucciones.SetActive(true);
         panelResultados.SetActive(false);
         
         if (joystick != null) joystick.SetActive(false);
-        
-        // BUG FIX: Apagamos el contenedor al inicio para que no interfiera con el Canvas
         if (contenedorJuego != null) contenedorJuego.SetActive(false); 
 
         _ = ConectarSupabase(); 
     }
+
     void Start()
     {
-        // Llamamos al AudioManager que viene desde el Login
         if (AudioManager.instance != null)
         {
-            // Cambiamos a la pista del nivel (Nivel 1 o la que asignaras para burbujas)
-            // Esto hará que la música suene mientras están las instrucciones puestas.
             AudioManager.instance.CambiarMusica(AudioManager.instance.musicaNivel2);
         }
     }
+
     private async Task ConectarSupabase()
     {
         try {
@@ -64,58 +60,58 @@ public class GameManagerLaberinto : MonoBehaviour
         } catch { /* Conexión silenciosa */ }
     }
 
-
     void Update()
     {
         if (juegoActivo) tiempoJugado += Time.deltaTime;
     }
 
-    // Se llama desde el botón "Entendido" del panel azul
     public void IniciarJuego() 
     {
-        overlayInstrucciones.SetActive(false); // Quitamos letrero azul
-        
-        // BUG FIX: Encendemos el mundo del juego ahora que el usuario dio click
+        overlayInstrucciones.SetActive(false); 
         if (contenedorJuego != null) contenedorJuego.SetActive(true); 
-        
-        if (joystick != null) joystick.SetActive(true); // Aparece el control
+        if (joystick != null) joystick.SetActive(true); 
         
         juegoActivo = true;
         tiempoJugado = 0f;
         conteoGolpes = 0;
     }
 
+    // --- ESTA ES LA FUNCIÓN QUE RECIBE EL GOLPE ---
     public void RegistrarGolpePared() 
     {
         if (juegoActivo)
         {
             conteoGolpes++;
-            Debug.Log("Golpe registrado: " + conteoGolpes);
+            Debug.Log("GameManager: Golpe registrado. Total: " + conteoGolpes);
         }
     }
 
-    public void TerminarJuego() 
-    {
-        juegoActivo = false; 
-        
-        if (joystick != null) joystick.SetActive(false);
-        if (contenedorJuego != null) contenedorJuego.SetActive(false); // Apagamos el mundo al ganar
+   public void TerminarJuego() 
+{
+    if (!juegoActivo) return; 
+    juegoActivo = false; 
+    
+    if (joystick != null) joystick.SetActive(false);
 
-        // Formatear tiempo
-        int minutos = Mathf.FloorToInt(tiempoJugado / 60F);
-        int segundos = Mathf.FloorToInt(tiempoJugado % 60F);
-        
-        if (textoGolpes != null) textoGolpes.text = conteoGolpes.ToString();
-        if (textoTiempo != null) textoTiempo.text = string.Format("{0:00}:{1:00}", minutos, segundos);
+    // --- EL CAMBIO ESTÁ AQUÍ ---
+    // Apagamos el mundo del juego para que el panel de resultados se vea limpio
+    if (contenedorJuego != null) contenedorJuego.SetActive(false); 
+    
+    // Formatear tiempo
+    int minutos = Mathf.FloorToInt(tiempoJugado / 60F);
+    int segundos = Mathf.FloorToInt(tiempoJugado % 60F);
+    
+    if (textoGolpes != null) textoGolpes.text = conteoGolpes.ToString();
+    if (textoTiempo != null) textoTiempo.text = string.Format("{0:00}:{1:00}", minutos, segundos);
 
-        panelResultados.SetActive(true);
+    panelResultados.SetActive(true); // Ahora este panel será lo único en pantalla
 
-        int nivelFrustracion = Mathf.Clamp(1 + (conteoGolpes / 2), 1, 10);
-        int pId = PlayerPrefs.GetInt("PacienteID", 1);
-        int cId = PlayerPrefs.GetInt("CitaID", 1);
-
-        _ = EnviarMetricasSupabase(pId, cId, nivelFrustracion, Mathf.RoundToInt(tiempoJugado * 1000));
-    }
+    // Guardar métricas...
+    int pId = PlayerPrefs.GetInt("PacienteID", 1);
+    int cId = PlayerPrefs.GetInt("CitaID", 1);
+    int nivelFrustracion = Mathf.Clamp(1 + (conteoGolpes / 2), 1, 10);
+    _ = EnviarMetricasSupabase(pId, cId, nivelFrustracion, Mathf.RoundToInt(tiempoJugado * 1000));
+}
 
     private async Task EnviarMetricasSupabase(int pId, int cId, int frustracion, int tiempoMs) 
     {
@@ -131,7 +127,7 @@ public class GameManagerLaberinto : MonoBehaviour
                 TipoJuegoId = tipoJuegoID
             };
             await _supabase.From<MetricaIA>().Insert(metrica);
-            Debug.Log("Métricas enviadas correctamente");
+            Debug.Log("Métricas enviadas correctamente a Supabase");
         } catch (System.Exception ex) {
             Debug.LogError("Error Supabase: " + ex.Message);
         }
