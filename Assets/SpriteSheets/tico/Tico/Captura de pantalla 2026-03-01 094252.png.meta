@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 5eaef655c21847247993135159e2768e
+guid: 795e93549fdd38346bd5b337424a6a57
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6136574687756329301
-    second: burbuja_morada_0
+      213: -6895885906969596435
+    second: Captura de pantalla 2026-03-01 094252_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,17 +109,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: burbuja_morada_0
+      name: Captura de pantalla 2026-03-01 094252_0
       rect:
         serializedVersion: 2
-        x: 20
-        y: 24
-        width: 327
-        height: 345
+        x: 12
+        y: 8
+        width: 111
+        height: 205
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bae51ae95d186daa0800000000000000
-      internalID: -6136574687756329301
+      spriteID: ded6477bd44ec40a0800000000000000
+      internalID: -6895885906969596435
       vertices: []
       indices: 
       edges: []
@@ -148,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      burbuja_morada_0: -6136574687756329301
+      Captura de pantalla 2026-03-01 094252_0: -6895885906969596435
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

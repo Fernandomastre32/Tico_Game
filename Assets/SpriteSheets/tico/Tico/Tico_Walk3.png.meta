@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b69ee5017805c784cba6005cb3dc267e
+guid: 63a5a25d0403beb48bb8f55e7fef1e6e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8982397659550411096
-    second: tico_reading_0
+      213: -1504535144886599574
+    second: Captura de pantalla 2026-03-29 200813_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,6 +97,19 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -113,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tico_reading_0
+      name: Captura de pantalla 2026-03-29 200813_0
       rect:
         serializedVersion: 2
-        x: 18
-        y: 3
-        width: 147
-        height: 202
+        x: 4
+        y: 4
+        width: 145
+        height: 259
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8596dc0a413e7ac70800000000000000
-      internalID: 8982397659550411096
+      spriteID: a6081f0d141de1be0800000000000000
+      internalID: -1504535144886599574
       vertices: []
       indices: 
       edges: []
@@ -148,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      tico_reading_0: 8982397659550411096
+      Captura de pantalla 2026-03-29 200813_0: -1504535144886599574
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

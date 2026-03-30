@@ -1299,6 +1299,7 @@ GameObject:
   - component: {fileID: 442776141}
   - component: {fileID: 442776140}
   - component: {fileID: 442776139}
+  - component: {fileID: 442776142}
   m_Layer: 0
   m_Name: tico_sit_0
   m_TagString: Player
@@ -1443,7 +1444,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &442776141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1458,6 +1459,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Movimiento_tico
   velocidad: 5
   joystick: {fileID: 998586648}
+--- !u!95 &442776142
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442776136}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0f438e1bd8103aa499a84bc9085ad968, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &487333843
 GameObject:
   m_ObjectHideFlags: 0

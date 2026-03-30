@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ef0c58b5485fd4e429d01bf39d7ed082
+guid: b69ee5017805c784cba6005cb3dc267e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4428909791795993752
-    second: burbuja_amarilla_0
+      213: 8982397659550411096
+    second: tico_reading_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,17 +109,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: burbuja_amarilla_0
+      name: tico_reading_0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 22
-        width: 327
-        height: 347
+        x: 18
+        y: 3
+        width: 147
+        height: 202
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 86320cd720a5982c0800000000000000
-      internalID: -4428909791795993752
+      spriteID: 8596dc0a413e7ac70800000000000000
+      internalID: 8982397659550411096
       vertices: []
       indices: 
       edges: []
@@ -148,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      burbuja_amarilla_0: -4428909791795993752
+      tico_reading_0: 8982397659550411096
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

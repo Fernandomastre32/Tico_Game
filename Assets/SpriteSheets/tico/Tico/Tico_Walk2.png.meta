@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: be73b92862d27694ea3421c27d2c7606
+guid: 4b9a1ee183499974d804ae7b05a20599
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5283724447531564307
-    second: tico_sitting_0
+      213: -3892417819431804293
+    second: Captura de pantalla 2026-03-29 200804_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,6 +97,19 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -113,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tico_sitting_0
+      name: Captura de pantalla 2026-03-29 200804_0
       rect:
         serializedVersion: 2
-        x: 22
-        y: 12
-        width: 137
-        height: 174
+        x: 7
+        y: 8
+        width: 155
+        height: 258
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 31d7a22046f835940800000000000000
-      internalID: 5283724447531564307
+      spriteID: b72ed5bbd9a5bf9c0800000000000000
+      internalID: -3892417819431804293
       vertices: []
       indices: 
       edges: []
@@ -148,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      tico_sitting_0: 5283724447531564307
+      Captura de pantalla 2026-03-29 200804_0: -3892417819431804293
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 7fd382ddcd1dabd43aadda4bfa0e15b2
+guid: 076e56b60ecb8de41baede25b1480f28
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4609730394388536982
-    second: sonido_0
-  - first:
-      213: -335499986201756795
-    second: sonido_1
-  - first:
-      213: 5874037850313249005
-    second: sonido_2
+      213: 4305932005441535461
+    second: burbuja_verde_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -115,17 +109,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sonido_0
+      name: burbuja_verde_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 0
-        width: 2527
-        height: 1695
+        x: 22
+        y: 24
+        width: 325
+        height: 344
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,52 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 69e99dbce5d09ff30800000000000000
-      internalID: 4609730394388536982
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sonido_1
-      rect:
-        serializedVersion: 2
-        x: 2398
-        y: 102
-        width: 8
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 58bbb444a80185bf0800000000000000
-      internalID: -335499986201756795
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sonido_2
-      rect:
-        serializedVersion: 2
-        x: 2401
-        y: 88
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: de0de198d46c48150800000000000000
-      internalID: 5874037850313249005
+      spriteID: 5edf35b585eb1cb30800000000000000
+      internalID: 4305932005441535461
       vertices: []
       indices: 
       edges: []
@@ -198,9 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      sonido_0: 4609730394388536982
-      sonido_1: -335499986201756795
-      sonido_2: 5874037850313249005
+      burbuja_verde_0: 4305932005441535461
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
