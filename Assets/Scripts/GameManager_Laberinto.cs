@@ -134,5 +134,5 @@ public class GameManagerLaberinto : MonoBehaviour
     }
 
     public void BotonMenu() { SceneManager.LoadScene("Flujo_Menu"); }
-    public void BotonSiguiente() { SceneManager.LoadScene("nivel3"); }
+    public void BotonSiguiente() { SceneManager.LoadScene("flujo_Niveles"); }
 }
