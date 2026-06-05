@@ -74,12 +74,10 @@ public class AuthManager : MonoBehaviour
         } catch (Exception ex) { Debug.LogWarning(ex.Message); }
     }
 
-    // Aquí ocurre la magia del nuevo registro automático
     private async void EvaluarFlujoTutor(Session session)
     {
         _currentSession = session;
 
-        // Guardamos el email del tutor. Esto será ORO puro cuando queramos registrarle un paciente después
         PlayerPrefs.SetString("TokenSesion", session.AccessToken);
         PlayerPrefs.SetString("UserEmail", session.User.Email);
         PlayerPrefs.Save();
@@ -88,25 +86,56 @@ public class AuthManager : MonoBehaviour
 
         try
         {
-            // 1. Buscamos si el tutor ya está registrado en nuestra tabla pública
             var queryTutor = await _supabase.From<Tutor>().Where(x => x.Email == session.User.Email).Get();
+            Tutor tutorActual;
 
-            // 2. Si la consulta viene vacía, es un tutor nuevo y lo insertamos
             if (queryTutor.Models.Count == 0)
             {
-                string nombreGoogle = "Nuevo Tutor";
-                if (_currentSession.User.UserMetadata != null && _currentSession.User.UserMetadata.ContainsKey("full_name"))
+                // Extraemos nombre y apellidos de Google si existen
+                string nombreCompletoExtraido = session.User.Email.Split('@')[0]; // Por defecto
+                
+                if (_currentSession.User.UserMetadata != null)
                 {
-                    nombreGoogle = _currentSession.User.UserMetadata["full_name"].ToString();
+                    if (_currentSession.User.UserMetadata.ContainsKey("full_name"))
+                    {
+                        nombreCompletoExtraido = _currentSession.User.UserMetadata["full_name"].ToString();
+                    }
+                    else if (_currentSession.User.UserMetadata.ContainsKey("name"))
+                    {
+                        nombreCompletoExtraido = _currentSession.User.UserMetadata["name"].ToString();
+                    }
                 }
 
-                var nuevoTutor = new Tutor { Email = session.User.Email, Nombre = nombreGoogle };
-                await _supabase.From<Tutor>().Insert(nuevoTutor);
-                Debug.Log("Nuevo tutor registrado automáticamente en la base de datos.");
+                var nuevoTutor = new Tutor { Email = session.User.Email, Nombre = nombreCompletoExtraido };
+                
+                // Insertamos y capturamos el ID numérico generado
+                var respuestaInsert = await _supabase.From<Tutor>().Insert(nuevoTutor);
+                tutorActual = respuestaInsert.Models[0]; 
+                Debug.Log("Nuevo tutor registrado en BD con ID: " + tutorActual.Id);
+            }
+            else
+            {
+                tutorActual = queryTutor.Models[0];
             }
 
-            // 3. Ya sea nuevo o viejo, lo mandamos al menú principal del juego
-            StartCoroutine(CargarEscenaMenuSeguro());
+            // Guardamos el ID numérico del tutor para usarlo en la siguiente pantalla
+            PlayerPrefs.SetInt("TutorId", tutorActual.Id);
+            PlayerPrefs.Save();
+
+            // Verificamos si este tutor ya tiene un paciente (niño) asignado
+            UpdateError("Verificando datos del niño...");
+            var queryNino = await _supabase.From<Paciente>().Where(x => x.TutorId == tutorActual.Id).Get();
+
+            if (queryNino.Models.Count == 0)
+            {
+                Debug.Log("No hay niños registrados. Yendo a escena de registro.");
+                StartCoroutine(CargarEscenaSegura("Registro_nino")); 
+            }
+            else
+            {
+                Debug.Log("Niño detectado. Entrando directo al juego.");
+                StartCoroutine(CargarEscenaSegura("Flujo_Menu"));
+            }
         }
         catch (Exception ex)
         {
@@ -115,10 +144,10 @@ public class AuthManager : MonoBehaviour
         }
     }
 
-    private System.Collections.IEnumerator CargarEscenaMenuSeguro()
+    private System.Collections.IEnumerator CargarEscenaSegura(string nombreEscena)
     {
         yield return null; 
-        SceneManager.LoadScene("Flujo_Menu"); 
+        SceneManager.LoadScene(nombreEscena); 
     }
 
     private void UpdateError(string msg) { if (errorText != null) errorText.text = msg; }
