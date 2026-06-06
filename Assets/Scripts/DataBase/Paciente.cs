@@ -4,6 +4,7 @@ using Postgrest.Models;
 [Table("pacientes")]
 public class Paciente : BaseModel
 {
+    // Regresamos el Id original a string para que no choque
     [PrimaryKey("id", false)] 
     public string Id { get; set; }
 
@@ -19,10 +20,13 @@ public class Paciente : BaseModel
     [Column("fecha_nacimiento")]
     public string FechaNacimiento { get; set; }
 
-    // ¡Cambio clave! Ahora es un entero para que coincida con el int4 de tu imagen
     [Column("tutor_id")] 
     public int TutorId { get; set; } 
     
     [Column("estado_activo")]
     public bool EstadoActivo { get; set; }
+
+    // ¡TU EXCELENTE IDEA! Agregamos el expediente (int8 en BD = long en C#)
+    [Column("numero_expediente")]
+    public long NumeroExpediente { get; set; }
 }

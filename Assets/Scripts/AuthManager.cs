@@ -46,7 +46,7 @@ public class AuthManager : MonoBehaviour
             var session = await _supabase.Auth.SignIn(emailField.text, passwordField.text);
             if (session != null) EvaluarFlujoTutor(session);
         } 
-        catch (Exception ex) 
+        catch (Exception) 
         { 
             Debug.Log("Usuario no existe o error de red, intentando registro...");
             try {
@@ -91,8 +91,7 @@ public class AuthManager : MonoBehaviour
 
             if (queryTutor.Models.Count == 0)
             {
-                // Extraemos nombre y apellidos de Google si existen
-                string nombreCompletoExtraido = session.User.Email.Split('@')[0]; // Por defecto
+                string nombreCompletoExtraido = session.User.Email.Split('@')[0]; 
                 
                 if (_currentSession.User.UserMetadata != null)
                 {
@@ -108,7 +107,6 @@ public class AuthManager : MonoBehaviour
 
                 var nuevoTutor = new Tutor { Email = session.User.Email, Nombre = nombreCompletoExtraido };
                 
-                // Insertamos y capturamos el ID numérico generado
                 var respuestaInsert = await _supabase.From<Tutor>().Insert(nuevoTutor);
                 tutorActual = respuestaInsert.Models[0]; 
                 Debug.Log("Nuevo tutor registrado en BD con ID: " + tutorActual.Id);
@@ -118,11 +116,9 @@ public class AuthManager : MonoBehaviour
                 tutorActual = queryTutor.Models[0];
             }
 
-            // Guardamos el ID numérico del tutor para usarlo en la siguiente pantalla
             PlayerPrefs.SetInt("TutorId", tutorActual.Id);
             PlayerPrefs.Save();
 
-            // Verificamos si este tutor ya tiene un paciente (niño) asignado
             UpdateError("Verificando datos del niño...");
             var queryNino = await _supabase.From<Paciente>().Where(x => x.TutorId == tutorActual.Id).Get();
 
@@ -133,13 +129,18 @@ public class AuthManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("Niño detectado. Entrando directo al juego.");
+                // Guardamos el Id real (UUID) como un texto
+string idDelNino = queryNino.Models[0].Id;
+PlayerPrefs.SetString("PacienteID", idDelNino);
+PlayerPrefs.Save();
+
+                Debug.Log("Niño detectado con Expediente: " + idDelNino + ". Entrando directo al juego.");
                 StartCoroutine(CargarEscenaSegura("Flujo_Menu"));
             }
         }
         catch (Exception ex)
         {
-            UpdateError("Error al sincronizar datos.");
+            UpdateError("Error técnico: " + ex.Message);
             Debug.LogError("Error en el flujo del tutor: " + ex.Message);
         }
     }

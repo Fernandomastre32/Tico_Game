@@ -70,14 +70,10 @@ public class GameManagerNivel3 : MonoBehaviour
         } catch (System.Exception ex) { Debug.LogError("Error Supabase: " + ex.Message); }
     }
 
-    // NUEVA FUNCIÓN START: Se ejecuta justo después de Awake y antes del primer frame
     void Start()
     {
-        // Llamamos al AudioManager que viene desde el Login
         if (AudioManager.instance != null)
         {
-            // Cambiamos a la pista del nivel (Nivel 1 o la que asignaras para burbujas)
-            // Esto hará que la música suene mientras están las instrucciones puestas.
             AudioManager.instance.CambiarMusica(AudioManager.instance.musicaNivel1);
         }
     }
@@ -183,17 +179,36 @@ public class GameManagerNivel3 : MonoBehaviour
         textoIncorrectas.text = conteoIncorrectas.ToString();
         if (textoPuntajeFinal != null) textoPuntajeFinal.text = "¡Lograste " + conteoCorrectas + " burbujas!";
 
-        int pId = PlayerPrefs.GetInt("PacienteID", 1);
+        // --- CORRECCIÓN AQUÍ: Se lee como texto (String) ---
+        string pId = PlayerPrefs.GetString("PacienteID", "");
         int cId = PlayerPrefs.GetInt("CitaID", 1);
+        
         _ = EnviarMetricasSupabase(pId, cId, Mathf.Clamp(1 + (conteoIncorrectas/2), 1, 10), toquesValidos > 0 ? Mathf.RoundToInt((sumaTiempoReaccion / toquesValidos) * 1000f) : 0);
     }
 
-    private async Task EnviarMetricasSupabase(int pId, int cId, int frustracion, int reaccionMs)
+    // --- CORRECCIÓN AQUÍ: El parámetro pId ahora es string ---
+    private async Task EnviarMetricasSupabase(string pId, int cId, int frustracion, int reaccionMs)
     {
         if (_supabase == null) return;
+        
+        if (string.IsNullOrEmpty(pId)) 
+        {
+            Debug.LogError("No se pudo enviar la métrica: El UUID no está guardado en el dispositivo.");
+            return;
+        }
+
         try {
-            var metrica = new MetricaIA { PacienteId = pId, CitaId = cId, Frustracion = frustracion, LatenciaMs = 30, PresionToque = 1.0f, TiempoReaccionMs = reaccionMs, TipoJuegoId = tipoJuegoID };
+            var metrica = new MetricaIA { 
+                PacienteId = pId, 
+                CitaId = cId, 
+                Frustracion = frustracion, 
+                LatenciaMs = 30, 
+                PresionToque = 1.0f, 
+                TiempoReaccionMs = reaccionMs, 
+                TipoJuegoId = tipoJuegoID 
+            };
             await _supabase.From<MetricaIA>().Insert(metrica);
+            Debug.Log("Métricas de Nivel 3 enviadas correctamente con el UUID.");
         } catch (System.Exception ex) { Debug.LogError("Error: " + ex.Message); }
     }
 

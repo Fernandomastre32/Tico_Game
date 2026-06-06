@@ -5,11 +5,12 @@ using TMPro;
 using System.Collections;
 using System.Threading.Tasks;
 using Supabase;
+using System; 
 
 public class GameManagerLaberinto : MonoBehaviour 
 {
     [Header("Configuración del Tipo de Juego")]
-    public int tipoJuegoID = 2; // ID 2 para Laberinto
+    public int tipoJuegoID = 2; 
 
     [Header("Contenedores de Jerarquía")]
     public GameObject contenedorJuego; 
@@ -56,8 +57,10 @@ public class GameManagerLaberinto : MonoBehaviour
             var options = new SupabaseOptions { AutoRefreshToken = true };
             _supabase = new Supabase.Client(supabaseUrl, supabaseAnonKey, options);
             await _supabase.InitializeAsync();
-            Debug.Log("Supabase listo en segundo plano");
-        } catch { /* Conexión silenciosa */ }
+            Debug.Log("Supabase conectado para enviar métricas.");
+        } catch (Exception ex) { 
+            Debug.LogWarning("Conexión silenciosa falló: " + ex.Message); 
+        }
     }
 
     void Update()
@@ -76,49 +79,51 @@ public class GameManagerLaberinto : MonoBehaviour
         conteoGolpes = 0;
     }
 
-    // --- ESTA ES LA FUNCIÓN QUE RECIBE EL GOLPE ---
     public void RegistrarGolpePared() 
     {
         if (juegoActivo)
         {
             conteoGolpes++;
-            Debug.Log("GameManager: Golpe registrado. Total: " + conteoGolpes);
         }
     }
 
-   public void TerminarJuego() 
-{
-    if (!juegoActivo) return; 
-    juegoActivo = false; 
-    
-    if (joystick != null) joystick.SetActive(false);
-
-    // --- EL CAMBIO ESTÁ AQUÍ ---
-    // Apagamos el mundo del juego para que el panel de resultados se vea limpio
-    if (contenedorJuego != null) contenedorJuego.SetActive(false); 
-    
-    // Formatear tiempo
-    int minutos = Mathf.FloorToInt(tiempoJugado / 60F);
-    int segundos = Mathf.FloorToInt(tiempoJugado % 60F);
-    
-    if (textoGolpes != null) textoGolpes.text = conteoGolpes.ToString();
-    if (textoTiempo != null) textoTiempo.text = string.Format("{0:00}:{1:00}", minutos, segundos);
-
-    panelResultados.SetActive(true); // Ahora este panel será lo único en pantalla
-
-    // Guardar métricas...
-    int pId = PlayerPrefs.GetInt("PacienteID", 1);
-    int cId = PlayerPrefs.GetInt("CitaID", 1);
-    int nivelFrustracion = Mathf.Clamp(1 + (conteoGolpes / 2), 1, 10);
-    _ = EnviarMetricasSupabase(pId, cId, nivelFrustracion, Mathf.RoundToInt(tiempoJugado * 1000));
-}
-
-    private async Task EnviarMetricasSupabase(int pId, int cId, int frustracion, int tiempoMs) 
+    public void TerminarJuego() 
     {
+        if (!juegoActivo) return; 
+        juegoActivo = false; 
+        
+        if (joystick != null) joystick.SetActive(false);
+        if (contenedorJuego != null) contenedorJuego.SetActive(false); 
+        
+        int minutos = Mathf.FloorToInt(tiempoJugado / 60F);
+        int segundos = Mathf.FloorToInt(tiempoJugado % 60F);
+        
+        if (textoGolpes != null) textoGolpes.text = conteoGolpes.ToString();
+        if (textoTiempo != null) textoTiempo.text = string.Format("{0:00}:{1:00}", minutos, segundos);
+
+        panelResultados.SetActive(true); 
+
+        // AHORA LO LEEMOS COMO TEXTO (STRING) PARA QUE ENTIENDA EL UUID
+     string pId = PlayerPrefs.GetString("PacienteID", "");
+        int cId = PlayerPrefs.GetInt("CitaID", 1); 
+        int nivelFrustracion = Mathf.Clamp(1 + (conteoGolpes / 2), 1, 10);
+        
+        _ = EnviarMetricasSupabase(pId, cId, nivelFrustracion, Mathf.RoundToInt(tiempoJugado * 1000));
+    }
+
+    // CAMBIAMOS EL PARÁMETRO pId a string
+private async Task EnviarMetricasSupabase(string pId, int cId, int frustracion, int tiempoMs)    {
         if (_supabase == null) return;
+        
+        if (string.IsNullOrEmpty(pId)) 
+        {
+            Debug.LogError("No se pudo enviar la métrica: El UUID no está guardado en el dispositivo.");
+            return;
+        }
+
         try {
             var metrica = new MetricaIA {
-                PacienteId = pId,
+                PacienteId = pId, // Ahora manda el texto UUID correctamente
                 CitaId = cId,
                 Frustracion = frustracion,
                 LatenciaMs = 0, 
@@ -127,9 +132,9 @@ public class GameManagerLaberinto : MonoBehaviour
                 TipoJuegoId = tipoJuegoID
             };
             await _supabase.From<MetricaIA>().Insert(metrica);
-            Debug.Log("Métricas enviadas correctamente a Supabase");
-        } catch (System.Exception ex) {
-            Debug.LogError("Error Supabase: " + ex.Message);
+            Debug.Log("¡Métricas enviadas correctamente con el UUID!");
+        } catch (Exception ex) {
+            Debug.LogError("Error Supabase al enviar métricas: " + ex.Message);
         }
     }
 

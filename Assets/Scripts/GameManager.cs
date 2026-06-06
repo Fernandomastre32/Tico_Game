@@ -32,7 +32,6 @@ public class GameManager : MonoBehaviour
     public float tiempoReaccion = 2.5f; 
     public Sprite[] spritesFelices; 
     public Sprite[] spritesAnimo; 
-    // AQUÍ ESTABA EL ERROR: Agregamos las frases que faltaban
     public string[] frasesCorrectas = { "¡Muy bien!", "¡Ese es el color!", "¡Genial!" };
     public string[] frasesAnimo = { "¡Casi!, intenta otra vez", "¡Tú puedes!", "¡Sigue buscando!" };
 
@@ -67,16 +66,15 @@ public class GameManager : MonoBehaviour
             await _supabase.InitializeAsync();
         } catch (System.Exception ex) { Debug.LogError("Error Supabase: " + ex.Message); }
     }
+
     void Start()
     {
-        // Llamamos al AudioManager que viene desde el Login
         if (AudioManager.instance != null)
         {
-            // Cambiamos a la pista del nivel (Nivel 1 o la que asignaras para burbujas)
-            // Esto hará que la música suene mientras están las instrucciones puestas.
             AudioManager.instance.CambiarMusica(AudioManager.instance.musicaNivel1);
         }
     }
+
     void Update() { if (juegoActivo) tiempoJugado += Time.deltaTime; }
 
     public void IniciarJuego()
@@ -138,18 +136,27 @@ public class GameManager : MonoBehaviour
         int nivelFrustracion = Mathf.Clamp(1 + conteoIncorrectas, 1, 10);
         int promedioReaccionMs = toquesValidos > 0 ? Mathf.RoundToInt((sumaTiempoReaccion / toquesValidos) * 1000f) : 0;
 
-        int pId = PlayerPrefs.GetInt("PacienteID", 1);
+        // --- CORRECCIÓN AQUÍ: Se lee como texto (String) ---
+        string pId = PlayerPrefs.GetString("PacienteID", "");
         int cId = PlayerPrefs.GetInt("CitaID", 1);
 
         _ = EnviarMetricasSupabase(pId, cId, nivelFrustracion, promedioReaccionMs);
     }
 
-    private async Task EnviarMetricasSupabase(int pId, int cId, int frustracion, int reaccionMs)
+    // --- CORRECCIÓN AQUÍ: Se recibe como texto (String) ---
+    private async Task EnviarMetricasSupabase(string pId, int cId, int frustracion, int reaccionMs)
     {
         if (_supabase == null) return;
+        
+        if (string.IsNullOrEmpty(pId)) 
+        {
+            Debug.LogError("No se pudo enviar la métrica: El UUID no está guardado en el dispositivo.");
+            return;
+        }
+
         try {
             var metrica = new MetricaIA {
-                PacienteId = pId,
+                PacienteId = pId, // Envía el UUID
                 CitaId = cId,
                 Frustracion = frustracion,
                 LatenciaMs = 30,
@@ -158,6 +165,7 @@ public class GameManager : MonoBehaviour
                 TipoJuegoId = tipoJuegoID
             };
             await _supabase.From<MetricaIA>().Insert(metrica);
+            Debug.Log("Métricas de burbujas enviadas correctamente.");
         } catch (System.Exception ex) { Debug.LogError("Error: " + ex.Message); }
     }
 

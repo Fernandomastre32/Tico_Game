@@ -57,7 +57,6 @@ public class RegistroNinoManager : MonoBehaviour
         dropdownAnio.ClearOptions();
         List<string> anios = new List<string> { "Año" };
         int anioActual = DateTime.Now.Year;
-        // Mostramos los últimos 20 años
         for (int i = anioActual; i >= anioActual - 20; i--) anios.Add(i.ToString());
         dropdownAnio.AddOptions(anios);
     }
@@ -92,7 +91,6 @@ public class RegistroNinoManager : MonoBehaviour
             return;
         }
 
-        // Extraemos el ID numérico (int4) que guardamos en la pantalla de Login
         int idTutor = PlayerPrefs.GetInt("TutorId", -1);
         
         if (idTutor == -1)
@@ -116,7 +114,15 @@ public class RegistroNinoManager : MonoBehaviour
                 EstadoActivo = true
             };
 
-            await _supabase.From<Paciente>().Insert(nuevoNino);
+            var respuestaInsert = await _supabase.From<Paciente>().Insert(nuevoNino);
+
+            if (respuestaInsert.Models.Count > 0)
+            {
+                // Guardamos el Id real (UUID) recién creado como un texto
+string idNuevoNino = respuestaInsert.Models[0].Id;
+PlayerPrefs.SetString("PacienteID", idNuevoNino);
+PlayerPrefs.Save();
+            }
 
             MostrarMensaje("¡Registro exitoso! Entrando al juego...", Color.green);
             

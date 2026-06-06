@@ -5,8 +5,8 @@ using System;
 [Serializable]
 [Table("metricas_ia")] // El nombre de tu tabla en Supabase
 public class MetricaIA : BaseModel
-{
-    [Column("paciente_id")] public int PacienteId { get; set; }
+{[Column("paciente_id")]
+public string PacienteId { get; set; } // DEBE ser string para aceptar el UUID
     [Column("cita_id")] public int CitaId { get; set; }
     [Column("frustracion")] public int Frustracion { get; set; }
     [Column("latencia_ms")] public int LatenciaMs { get; set; }
