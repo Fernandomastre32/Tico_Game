@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI; // <--- OBLIGATORIO para usar Sliders
 using UnityEngine.SceneManagement;
 using System.Threading.Tasks;
+using System; // <--- Agregado para usar DateTime
 using Supabase;
 
 public class MenuPausaManager : MonoBehaviour
@@ -32,7 +33,7 @@ public class MenuPausaManager : MonoBehaviour
             var options = new SupabaseOptions { AutoRefreshToken = true };
             _supabase = new Supabase.Client(supabaseUrl, supabaseAnonKey, options);
             await _supabase.InitializeAsync();
-        } catch (System.Exception ex) { Debug.LogWarning("Supabase Pausa: " + ex.Message); }
+        } catch (Exception ex) { Debug.LogWarning("Supabase Pausa: " + ex.Message); }
     }
 
     void Start()
@@ -82,7 +83,7 @@ public class MenuPausaManager : MonoBehaviour
         Time.timeScale = 1f; 
     }
 
-    // --- ¡AQUÍ ESTÁ EL CAMBIO PRINCIPAL! ---
+    // --- BOTÓN SALIR ---
     public async void BotonSalirNivel()
     {
         Time.timeScale = 1f; // Descongelamos el juego para que todo fluya
@@ -96,7 +97,6 @@ public class MenuPausaManager : MonoBehaviour
 
     // --- LÓGICA DE BASE DE DATOS ---
 
-    // Cambiado a Task para que el botón de arriba pueda esperarlo
     private async Task RegistrarAbandono()
     {
         string pId = PlayerPrefs.GetString("PacienteID", "");
@@ -119,18 +119,25 @@ public class MenuPausaManager : MonoBehaviour
         int idAutomatico = PlayerPrefs.GetInt("JuegoActualID", 1); 
 
         try {
+            // ¡EL PAQUETE COMPLETO!
             var metricaAbandono = new MetricaIA {
                 PacienteId = pId, 
                 CitaId = cId, 
-                TipoJuegoId = idAutomatico, // Usamos el automático
+                TipoJuegoId = idAutomatico, 
                 Frustracion = 0, 
-                TiempoReaccionMs = 0
-                // EstadoPartida = "Abandonado" <-- Cuando agregues tu columna
+                TiempoReaccionMs = 0,
+                
+                // Campos adicionales requeridos por tu BD
+                LatenciaMs = 0,
+                PresionToque = 1.0f,
+                EstadoPartida = "Abandonado",
+                FechaRegistro = DateTime.Now // Guarda la hora exacta del abandono
             };
 
             await _supabase.From<MetricaIA>().Insert(metricaAbandono);
             Debug.Log("Abandono registrado exitosamente en BD para el Juego ID: " + idAutomatico);
-        } catch (System.Exception ex) {
+            
+        } catch (Exception ex) {
             Debug.LogError("Error al registrar abandono: " + ex.Message);
         }
     }
