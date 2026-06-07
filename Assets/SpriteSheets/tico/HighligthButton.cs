@@ -1,13 +1,37 @@
 using UnityEngine;
-public class HighligthButton : MonoBehaviour
+using UnityEngine.EventSystems; 
+using TMPro; 
+
+public class HighlightButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    void Start()
+    [SerializeField] private Color normalColour = Color.black;
+    [SerializeField] private Color highlightColour = Color.black;
+
+    private TextMeshProUGUI textoComponente;
+
+    void Awake()
     {
+        textoComponente = GetComponentInChildren<TextMeshProUGUI>();
         
+        if (textoComponente != null)
+        {
+            textoComponente.color = normalColour;
+        }
     }
 
-    void Update()
+    public void OnPointerDown(PointerEventData eventData)
     {
-        
+        if (textoComponente != null)
+        {
+            textoComponente.color = highlightColour;
+        }
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        if (textoComponente != null)
+        {
+            textoComponente.color = normalColour;
+        }
     }
 }

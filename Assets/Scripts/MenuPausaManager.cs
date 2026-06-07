@@ -69,6 +69,8 @@ public class MenuPausaManager : MonoBehaviour
 
     public void AbrirPausa()
     {
+        if (estaPausado) return; // Si ya está pausado, no hace nada repetido
+
         estaPausado = true;
         panelMenuOpciones.SetActive(true);
         botonPausaUI.SetActive(false);
@@ -77,6 +79,8 @@ public class MenuPausaManager : MonoBehaviour
 
     public void ReanudarJuego()
     {
+        if (!estaPausado) return; // Si no estaba pausado, no hace nada
+
         estaPausado = false;
         panelMenuOpciones.SetActive(false);
         botonPausaUI.SetActive(true);
