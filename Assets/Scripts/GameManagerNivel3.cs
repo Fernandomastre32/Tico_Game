@@ -58,6 +58,8 @@ public class GameManagerNivel3 : MonoBehaviour
 
     async void Awake()
     {
+        PlayerPrefs.SetInt("JuegoActualID", tipoJuegoID); 
+        PlayerPrefs.Save();
         overlayInstrucciones.SetActive(true);
         panelResultados.SetActive(false); 
         if(contenedorJuego != null) contenedorJuego.SetActive(false); 

@@ -34,6 +34,8 @@ public class GameManagerLaberinto : MonoBehaviour
 
     void Awake() 
     {
+        PlayerPrefs.SetInt("JuegoActualID", tipoJuegoID); 
+        PlayerPrefs.Save();
         overlayInstrucciones.SetActive(true);
         panelResultados.SetActive(false);
         
