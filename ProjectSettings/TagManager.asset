@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Text
   - Pared
+  - Manzana
+  - hoja
   layers:
   - Default
   - TransparentFX
