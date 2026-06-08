@@ -45,8 +45,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _OutlineTex:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+        m_Scale: {x: 2, y: 2}
+        m_Offset: {x: 2, y: 2}
     m_Ints: []
     m_Floats:
     - _Ambient: 0
@@ -72,7 +72,7 @@ Material:
     - _MaskSoftnessX: 0
     - _MaskSoftnessY: 0
     - _OutlineSoftness: 0.041
-    - _OutlineUVSpeedX: 0
+    - _OutlineUVSpeedX: 2
     - _OutlineUVSpeedY: 0
     - _OutlineWidth: 0.137
     - _PerspectiveFilter: 1
@@ -103,10 +103,10 @@ Material:
     m_Colors:
     - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
     - _EnvMatrixRotation: {r: 0, g: 0, b: 0, a: 0}
-    - _FaceColor: {r: 0.6349519, g: 0.85819155, b: 0.96981126, a: 1}
+    - _FaceColor: {r: 0.3915094, g: 0.7995561, b: 1, a: 1}
     - _GlowColor: {r: 0, g: 1, b: 0, a: 0.5}
     - _MaskCoord: {r: 0, g: 0, b: 32767, a: 32767}
-    - _OutlineColor: {r: 0.31764707, g: 0.50980395, b: 0.62352943, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectFaceColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectOutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
