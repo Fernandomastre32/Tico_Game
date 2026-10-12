@@ -127,7 +127,8 @@ public class GameManager : MonoBehaviour
 
     private void TerminarJuego()
     {
-        juegoActivo = false; 
+        juegoActivo = false;
+        ProgresoNiveles.Completar(1);
         textoCorrectas.text = conteoCorrectas.ToString();
         textoIncorrectas.text = conteoIncorrectas.ToString();
         textoTiempo.text = string.Format("{0:00}:{1:00}", Mathf.FloorToInt(tiempoJugado / 60F), Mathf.FloorToInt(tiempoJugado % 60F));
