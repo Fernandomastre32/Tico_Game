@@ -1,10 +1,19 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/SpriteSheets/tico/boton_azul.png.meta
 guid: dd1fab8d9c38e31468089ef5950c1c7f
 TextureImporter:
   internalIDToNameTable:
   - first:
       213: 6835556448925143158
     second: boton_azul_0
+========
+guid: eaf82ddfabf678d4db51d00b37da13ef
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8220863355825438889
+    second: cortiba_c_0
+>>>>>>>> origin/main:Assets/SpriteSheets/tico/cortiba_c.jpeg.meta
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,17 +118,39 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
+<<<<<<<< HEAD:Assets/SpriteSheets/tico/boton_azul.png.meta
       name: boton_azul_0
+========
+      name: cortiba_c_0
+>>>>>>>> origin/main:Assets/SpriteSheets/tico/cortiba_c.jpeg.meta
       rect:
         serializedVersion: 2
         x: 0
         y: 0
+<<<<<<<< HEAD:Assets/SpriteSheets/tico/boton_azul.png.meta
         width: 644
         height: 204
+========
+        width: 1339
+        height: 800
+>>>>>>>> origin/main:Assets/SpriteSheets/tico/cortiba_c.jpeg.meta
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +159,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
+<<<<<<<< HEAD:Assets/SpriteSheets/tico/boton_azul.png.meta
       spriteID: 670505cbf56ccde50800000000000000
       internalID: 6835556448925143158
+========
+      spriteID: 75fbff87550a9ed80800000000000000
+      internalID: -8220863355825438889
+>>>>>>>> origin/main:Assets/SpriteSheets/tico/cortiba_c.jpeg.meta
       vertices: []
       indices: 
       edges: []
@@ -148,7 +184,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+<<<<<<<< HEAD:Assets/SpriteSheets/tico/boton_azul.png.meta
       boton_azul_0: 6835556448925143158
+========
+      cortiba_c_0: -8220863355825438889
+>>>>>>>> origin/main:Assets/SpriteSheets/tico/cortiba_c.jpeg.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

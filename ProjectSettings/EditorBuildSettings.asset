@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Login.unity
     guid: e02d396e4ed84874a9f7080640190dd5
   - enabled: 1
+    path: Assets/Scenes/Registro_nino.unity
+    guid: 674bbf9f9f897ac409403c641474368d
+  - enabled: 1
     path: Assets/Scenes/Flujo_Menu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1

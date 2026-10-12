@@ -772,10 +772,17 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 887500242}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -18}
   m_SizeDelta: {x: 710, y: 465}
+=======
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -10, y: -10}
+  m_SizeDelta: {x: 440, y: 220}
+>>>>>>> origin/main
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &409530025
 MonoBehaviour:
@@ -797,8 +804,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+<<<<<<< HEAD
   m_Sprite: {fileID: 21300000, guid: 255dd68faa3f4175bb7f2f380650e7b9, type: 3}
   m_Type: 1
+=======
+  m_Sprite: {fileID: 8001445660625608049, guid: 43ade4abf37457e42b14c1e5eb72fc9b, type: 3}
+  m_Type: 0
+>>>>>>> origin/main
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -931,7 +943,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 72273343957872747b9387f08b01cd88, type: 3}
+<<<<<<< HEAD
   m_Type: 1
+=======
+  m_Type: 0
+>>>>>>> origin/main
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1141,10 +1157,17 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 478183357}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 105, y: 0}
   m_SizeDelta: {x: 170, y: 50}
+=======
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 100.044586, y: -21.406496}
+  m_SizeDelta: {x: 79.91087, y: 17.187004}
+>>>>>>> origin/main
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &493527037
 MonoBehaviour:
@@ -1159,7 +1182,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
   m_Material: {fileID: 0}
+<<<<<<< HEAD
   m_Color: {r: 0.4705882, g: 0.2705882, b: 0.1450980, a: 1}
+=======
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+>>>>>>> origin/main
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1168,7 +1195,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 202f700ef7bf0424fae586665091356f, type: 3}
+<<<<<<< HEAD
     m_FontSize: 31
+=======
+    m_FontSize: 25
+>>>>>>> origin/main
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1887,7 +1918,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -5, y: 4}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1299365478
@@ -2093,8 +2124,13 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
   m_AnchoredPosition: {x: 0, y: 255}
   m_SizeDelta: {x: 650, y: 64}
+=======
+  m_AnchoredPosition: {x: -190, y: 100}
+  m_SizeDelta: {x: -130, y: 40}
+>>>>>>> origin/main
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1432137362
 MonoBehaviour:
@@ -3026,8 +3062,13 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
   m_AnchoredPosition: {x: -155, y: -22}
   m_SizeDelta: {x: 170, y: 48}
+=======
+  m_AnchoredPosition: {x: -134, y: -17}
+  m_SizeDelta: {x: 140, y: 30}
+>>>>>>> origin/main
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1662049036
 MonoBehaviour:
@@ -3058,8 +3099,13 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
+<<<<<<< HEAD
     rgba: 4280632696
   m_fontColor: {r: 0.4705882, g: 0.2705882, b: 0.1450980, a: 1}
+=======
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+>>>>>>> origin/main
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3416,8 +3462,13 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
   m_AnchoredPosition: {x: 0, y: 165}
   m_SizeDelta: {x: 510, y: 66}
+=======
+  m_AnchoredPosition: {x: 220, y: 100}
+  m_SizeDelta: {x: 140, y: 40}
+>>>>>>> origin/main
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2101842748
 MonoBehaviour:
@@ -3742,6 +3793,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HighlightButton
   normalColour: {r: 0, g: 0, b: 0, a: 1}
   highlightColour: {r: 0.20392157, g: 0.32941177, b: 0.64705884, a: 1}
+<<<<<<< HEAD
 --- !u!114 &2019000001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3780,6 +3832,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1976694333}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> origin/main
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

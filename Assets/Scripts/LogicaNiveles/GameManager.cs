@@ -5,45 +5,43 @@ using TMPro;
 using System.Collections; 
 using System.Threading.Tasks;
 using Supabase;
+using Postgrest.Attributes;
+using Postgrest.Models;
 
-public class GameManagerNivel3 : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     [Header("Configuración del Tipo de Juego")]
-    public int tipoJuegoID = 3; 
+    public int tipoJuegoID = 1; // 1 para Burbujas
 
     [Header("Interfaz de Usuario")]
     public GameObject overlayInstrucciones; 
     public GameObject contenedorJuego; 
     public Image imagenObjetivoArriba; 
-    public TMP_Text textoCronometro; 
-
+    
     [Header("Panel de Resultados")]
     public GameObject panelResultados; 
     public Text textoCorrectas; 
     public Text textoIncorrectas; 
-    public Text textoPuntajeFinal; 
-
-    [Header("Configuración de Tiempo")]
-    public float tiempoLimite = 30f; 
-    private float tiempoRestante;
+    public Text textoTiempo; 
 
     [Header("Reacciones de Tico")]
     public Image imagenTico; 
     public TMP_Text textoDialogoTico; 
     public Sprite spriteNeutral; 
-
-    public float tiempoReaccion = 2.0f; 
+    public string fraseNeutral = "Puedes reventar las burbujas tocándolas"; 
+    public float tiempoReaccion = 2.5f; 
     public Sprite[] spritesFelices; 
     public Sprite[] spritesAnimo; 
-    public string[] frasesCorrectas = { "¡Eso!", "¡Vas muy rápido!", "¡Genial!" };
-    public string fraseNeutral = "¡Rápido!, revienta las que puedas"; 
-    public string[] frasesAnimo = { "¡Casi!, ese no es", "¡Busca el color de arriba!", "¡Tú puedes!" };
+    public string[] frasesCorrectas = { "¡Muy bien!", "¡Ese es el color!", "¡Genial!" };
+    public string[] frasesAnimo = { "¡Casi!, intenta otra vez", "¡Tú puedes!", "¡Sigue buscando!" };
 
     [Header("Lógica del Nivel")]
     public Sprite[] secuenciaObjetivos; 
+    public bool patronAleatorio = true;
     private int indiceActual = 0; 
     private int conteoCorrectas = 0; 
     private int conteoIncorrectas = 0; 
+    private float tiempoJugado = 0f; 
     private bool juegoActivo = false; 
 
     [Header("Métricas IA y Supabase")]
@@ -58,10 +56,11 @@ public class GameManagerNivel3 : MonoBehaviour
 
     async void Awake()
     {
+        PlayerPrefs.SetInt("JuegoActualID", tipoJuegoID); 
+        PlayerPrefs.Save();
         overlayInstrucciones.SetActive(true);
         panelResultados.SetActive(false); 
         if(contenedorJuego != null) contenedorJuego.SetActive(false); 
-        tiempoRestante = tiempoLimite;
 
         try {
             var options = new SupabaseOptions { AutoRefreshToken = true };
@@ -70,36 +69,22 @@ public class GameManagerNivel3 : MonoBehaviour
         } catch (System.Exception ex) { Debug.LogError("Error Supabase: " + ex.Message); }
     }
 
-    // NUEVA FUNCIÓN START: Se ejecuta justo después de Awake y antes del primer frame
     void Start()
     {
-        // Llamamos al AudioManager que viene desde el Login
         if (AudioManager.instance != null)
         {
-            // Cambiamos a la pista del nivel (Nivel 1 o la que asignaras para burbujas)
-            // Esto hará que la música suene mientras están las instrucciones puestas.
             AudioManager.instance.CambiarMusica(AudioManager.instance.musicaNivel1);
         }
     }
 
-    void Update() 
-    { 
-        if (juegoActivo) 
-        {
-            tiempoRestante -= Time.deltaTime;
-            if (textoCronometro != null)
-                textoCronometro.text = Mathf.Max(0, tiempoRestante).ToString("F1") + "s";
-
-            if (tiempoRestante <= 0) TerminarJuego();
-        } 
-    }
+    void Update() { if (juegoActivo) tiempoJugado += Time.deltaTime; }
 
     public void IniciarJuego()
     {
         overlayInstrucciones.SetActive(false); 
         if(contenedorJuego != null) contenedorJuego.SetActive(true); 
         juegoActivo = true; 
-        MezclarSecuenciaObjetivos();
+        if (patronAleatorio && secuenciaObjetivos.Length > 0) MezclarSecuenciaObjetivos();
         ActualizarImagenObjetivo(); 
         VolverANeutral();
     }
@@ -115,89 +100,79 @@ public class GameManagerNivel3 : MonoBehaviour
         }
     }
 
-    public bool EvaluarBurbujaTocada(Sprite spriteBurbuja)
+    public void EvaluarBurbujaTocada(Sprite spriteBurbuja, GameObject burbujaObject)
     {
-        if (!juegoActivo) return false; 
+        if (!juegoActivo || indiceActual >= secuenciaObjetivos.Length) return; 
 
         if (spriteBurbuja == secuenciaObjetivos[indiceActual])
         {
             sumaTiempoReaccion += (Time.time - momentoAparicionObjetivo);
             toquesValidos++;
+            burbujaObject.SetActive(false); 
             conteoCorrectas++; 
             DispararReaccion(true); 
-            
-            Invoke("CheckSiguienteObjetivo", 0.1f);
-            
-            return true; 
+            if (!QuedanBurbujasDeColor(spriteBurbuja, burbujaObject))
+            {
+                indiceActual++; 
+                if (indiceActual < secuenciaObjetivos.Length) ActualizarImagenObjetivo(); 
+                else TerminarJuego(); 
+            }
         }
         else
         {
             conteoIncorrectas++; 
-            DispararReaccion(false);
-            return false; 
+            DispararReaccion(false);        
         }
-    }
-
-    private void CheckSiguienteObjetivo()
-    {
-        if (!QuedanBurbujasVisiblesDeColor(secuenciaObjetivos[indiceActual]))
-        {
-            indiceActual++; 
-            if (indiceActual >= secuenciaObjetivos.Length) 
-            {
-                indiceActual = 0;
-                MezclarSecuenciaObjetivos();
-            }
-            ActualizarImagenObjetivo(); 
-        }
-    }
-
-    private bool QuedanBurbujasVisiblesDeColor(Sprite colorBuscado)
-    {
-        BotonBurbujaNivel3[] todas = FindObjectsByType<BotonBurbujaNivel3>(FindObjectsSortMode.None);
-        foreach (BotonBurbujaNivel3 b in todas)
-        {
-            Image img = b.GetComponent<Image>();
-            if (img.enabled && img.sprite == colorBuscado) return true; 
-        }
-        return false; 
-    }
-
-    private void ActualizarImagenObjetivo() 
-    { 
-        if(indiceActual < secuenciaObjetivos.Length) 
-        { 
-            imagenObjetivoArriba.sprite = secuenciaObjetivos[indiceActual]; 
-            momentoAparicionObjetivo = Time.time; 
-        } 
     }
 
     private void TerminarJuego()
     {
-        if (!juegoActivo) return; 
         juegoActivo = false;
-        ProgresoNiveles.Completar(3);
+        ProgresoNiveles.Completar(1);
+        textoCorrectas.text = conteoCorrectas.ToString();
+        textoIncorrectas.text = conteoIncorrectas.ToString();
+        textoTiempo.text = string.Format("{0:00}:{1:00}", Mathf.FloorToInt(tiempoJugado / 60F), Mathf.FloorToInt(tiempoJugado % 60F));
+        
         if(contenedorJuego != null) contenedorJuego.SetActive(false);
         panelResultados.SetActive(true);
 
-        textoCorrectas.text = conteoCorrectas.ToString();
-        textoIncorrectas.text = conteoIncorrectas.ToString();
-        if (textoPuntajeFinal != null) textoPuntajeFinal.text = "¡Lograste " + conteoCorrectas + " burbujas!";
+        int nivelFrustracion = Mathf.Clamp(1 + conteoIncorrectas, 1, 10);
+        int promedioReaccionMs = toquesValidos > 0 ? Mathf.RoundToInt((sumaTiempoReaccion / toquesValidos) * 1000f) : 0;
 
-        int pId = PlayerPrefs.GetInt("PacienteID", 1);
+        // --- CORRECCIÓN AQUÍ: Se lee como texto (String) ---
+        string pId = PlayerPrefs.GetString("PacienteID", "");
         int cId = PlayerPrefs.GetInt("CitaID", 1);
-        _ = EnviarMetricasSupabase(pId, cId, Mathf.Clamp(1 + (conteoIncorrectas/2), 1, 10), toquesValidos > 0 ? Mathf.RoundToInt((sumaTiempoReaccion / toquesValidos) * 1000f) : 0);
+
+        _ = EnviarMetricasSupabase(pId, cId, nivelFrustracion, promedioReaccionMs);
     }
 
-    private async Task EnviarMetricasSupabase(int pId, int cId, int frustracion, int reaccionMs)
+    // --- CORRECCIÓN AQUÍ: Se recibe como texto (String) ---
+    private async Task EnviarMetricasSupabase(string pId, int cId, int frustracion, int reaccionMs)
     {
         if (_supabase == null) return;
+        
+        if (string.IsNullOrEmpty(pId)) 
+        {
+            Debug.LogError("No se pudo enviar la métrica: El UUID no está guardado en el dispositivo.");
+            return;
+        }
+
         try {
-            var metrica = new MetricaIA { PacienteId = pId, CitaId = cId, Frustracion = frustracion, LatenciaMs = 30, PresionToque = 1.0f, TiempoReaccionMs = reaccionMs, TipoJuegoId = tipoJuegoID };
+            var metrica = new MetricaIA {
+                PacienteId = pId, // Envía el UUID
+                CitaId = cId,
+                Frustracion = frustracion,
+                LatenciaMs = 30,
+                PresionToque = 1.0f,
+                TiempoReaccionMs = reaccionMs,
+                TipoJuegoId = tipoJuegoID
+            };
             await _supabase.From<MetricaIA>().Insert(metrica);
+            Debug.Log("Métricas de burbujas enviadas correctamente.");
         } catch (System.Exception ex) { Debug.LogError("Error: " + ex.Message); }
     }
 
+    // Métodos de ayuda
     private void DispararReaccion(bool esCorrecto) { if (rutinaReaccion != null) StopCoroutine(rutinaReaccion); rutinaReaccion = StartCoroutine(RutinaReaccionTico(esCorrecto)); }
     private IEnumerator RutinaReaccionTico(bool esCorrecto) {
         if (esCorrecto) {
@@ -210,7 +185,9 @@ public class GameManagerNivel3 : MonoBehaviour
         yield return new WaitForSeconds(tiempoReaccion);
         VolverANeutral();
     }
-    private void VolverANeutral() { if(imagenTico != null) imagenTico.sprite = spriteNeutral; if(textoDialogoTico != null) textoDialogoTico.text = fraseNeutral; }
+    private void VolverANeutral() { imagenTico.sprite = spriteNeutral; textoDialogoTico.text = fraseNeutral; }
+    private bool QuedanBurbujasDeColor(Sprite colorBuscado, GameObject burbujaIgnorada) { BotonBurbuja[] todasLasBurbujas = FindObjectsByType<BotonBurbuja>(FindObjectsSortMode.None); foreach (BotonBurbuja burbuja in todasLasBurbujas) { if (burbuja.gameObject.activeInHierarchy && burbuja.gameObject != burbujaIgnorada && burbuja.GetComponent<Image>().sprite == colorBuscado) return true; } return false; }
+    private void ActualizarImagenObjetivo() { if(indiceActual < secuenciaObjetivos.Length) { imagenObjetivoArriba.sprite = secuenciaObjetivos[indiceActual]; momentoAparicionObjetivo = Time.time; } }
     public void BotonMenu() { SceneManager.LoadScene("Flujo_Menu"); }
     public void BotonSiguiente() { SceneManager.LoadScene("flujo_Niveles"); }
 }
