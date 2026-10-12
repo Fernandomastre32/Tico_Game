@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b38d087b2a423ed46abdf7aeb3e8dbb4
+guid: ceb112ffefd3a5e4e8cefdc481f03873
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5335379949545045925
-    second: button_prueba_0
+      213: 7846353894188372215
+    second: boton_verde_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,7 +97,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: button_prueba_0
+      name: boton_verde_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 0
-        width: 308
-        height: 116
+        width: 642
+        height: 216
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 50, y: 30, z: 50, w: 30}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5afbf5acbc31b0a40800000000000000
-      internalID: 5335379949545045925
+      spriteID: 7f0d9158b49d3ec60800000000000000
+      internalID: 7846353894188372215
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: bc1f289f04fa1ac4ba19eb3ee9480963
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      button_prueba_0: 5335379949545045925
+      boton_verde_0: 7846353894188372215
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

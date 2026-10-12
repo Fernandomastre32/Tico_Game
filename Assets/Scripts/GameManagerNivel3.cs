@@ -175,7 +175,8 @@ public class GameManagerNivel3 : MonoBehaviour
     private void TerminarJuego()
     {
         if (!juegoActivo) return; 
-        juegoActivo = false; 
+        juegoActivo = false;
+        ProgresoNiveles.Completar(3);
         if(contenedorJuego != null) contenedorJuego.SetActive(false);
         panelResultados.SetActive(true);
 
